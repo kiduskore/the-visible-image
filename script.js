@@ -1,7 +1,7 @@
 'use strict';
 
 /* ════════════════════════════════════════════
-   BILINGUAL
+   BILINGUAL TRANSLATION HANDLER
 ════════════════════════════════════════════ */
 let currentLang = localStorage.getItem('lang') || 'en';
 
@@ -10,21 +10,27 @@ function setLang(lang) {
   localStorage.setItem('lang', lang);
   document.documentElement.setAttribute('data-lang', lang);
   document.documentElement.setAttribute('lang', lang === 'am' ? 'am' : 'en');
+  
   document.querySelectorAll('[data-en],[data-am]').forEach(el => {
     const t = el.getAttribute(`data-${lang}`);
     if (t !== null && el.children.length === 0) el.textContent = t;
   });
-  ['en','am'].forEach(l => {
+
+  ['en', 'am'].forEach(l => {
     const btn = document.getElementById(`lb-${l}`);
-    if (btn) { btn.classList.toggle('active', l === lang); btn.setAttribute('aria-pressed', l === lang); }
+    if (btn) {
+      btn.classList.toggle('active', l === lang);
+      btn.setAttribute('aria-pressed', l === lang);
+    }
   });
 }
+
 document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
 
 /* ════════════════════════════════════════════
-   CUSTOM CURSOR + LIGHT TRAIL (canvas)
+   CUSTOM GLASS CURSOR & LIGHT TRAIL
 ════════════════════════════════════════════ */
-const cursorDot  = document.getElementById('cursor-dot');
+const cursorDot = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
 const cursorCanvas = document.getElementById('cursor-canvas');
 const cCtx = cursorCanvas.getContext('2d');
@@ -33,61 +39,64 @@ let mx = -200, my = -200;
 let rx = -200, ry = -200;
 
 function resizeCursor() {
-  cursorCanvas.width  = window.innerWidth;
+  cursorCanvas.width = window.innerWidth;
   cursorCanvas.height = window.innerHeight;
 }
 resizeCursor();
 window.addEventListener('resize', resizeCursor);
 
-// Trail particles
 const trail = [];
-const TRAIL_MAX = 40;
+const TRAIL_MAX = 35;
 
 document.addEventListener('mousemove', (e) => {
-  mx = e.clientX; my = e.clientY;
+  mx = e.clientX;
+  my = e.clientY;
 
-  // Dot snaps instantly
   if (cursorDot) {
     cursorDot.style.left = mx + 'px';
-    cursorDot.style.top  = my + 'px';
+    cursorDot.style.top = my + 'px';
   }
 
-  // Push trail particle
+  // Soft glowing trail particles
   trail.push({
-    x: mx, y: my,
-    r: 2 + Math.random() * 3,
-    alpha: 0.7 + Math.random() * 0.3,
-    vx: (Math.random() - 0.5) * 1.5,
-    vy: (Math.random() - 0.5) * 1.5 - 0.5,
-    color: Math.random() > 0.5 ? [212,168,67] : [255,240,180],
+    x: mx,
+    y: my,
+    r: 1.5 + Math.random() * 2.5,
+    alpha: 0.6 + Math.random() * 0.4,
+    vx: (Math.random() - 0.5) * 1.2,
+    vy: (Math.random() - 0.5) * 1.2 - 0.3,
+    color: Math.random() > 0.4 ? [229, 190, 101] : [255, 245, 210],
     life: 1,
     decay: 0.02 + Math.random() * 0.03,
   });
   if (trail.length > TRAIL_MAX) trail.shift();
 });
 
-// Ring lags behind (lerp)
 function animateCursor() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
+  rx += (mx - rx) * 0.14;
+  ry += (my - ry) * 0.14;
+  
   if (cursorRing) {
     cursorRing.style.left = rx + 'px';
-    cursorRing.style.top  = ry + 'px';
+    cursorRing.style.top = ry + 'px';
   }
 
-  // Draw trail
   cCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
   for (let i = trail.length - 1; i >= 0; i--) {
     const p = trail[i];
-    p.x += p.vx; p.y += p.vy;
+    p.x += p.vx;
+    p.y += p.vy;
     p.life -= p.decay;
-    if (p.life <= 0) { trail.splice(i, 1); continue; }
-    const [r,g,b] = p.color;
-    const grad = cCtx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r * 3);
+    if (p.life <= 0) {
+      trail.splice(i, 1);
+      continue;
+    }
+    const [r, g, b] = p.color;
+    const grad = cCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3.5);
     grad.addColorStop(0, `rgba(${r},${g},${b},${p.alpha * p.life})`);
     grad.addColorStop(1, 'transparent');
     cCtx.beginPath();
-    cCtx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+    cCtx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2);
     cCtx.fillStyle = grad;
     cCtx.fill();
   }
@@ -95,53 +104,58 @@ function animateCursor() {
 }
 animateCursor();
 
-// Ring hover effect on interactive elements
-document.querySelectorAll('a, button, .pillar, .wq, .glass-card').forEach(el => {
+// Glass Hover targets
+const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .pillar-card, .eternity-card, .insight-item, .summary-card';
+document.querySelectorAll(hoverSelectors).forEach(el => {
   el.addEventListener('mouseenter', () => cursorRing?.classList.add('hover'));
   el.addEventListener('mouseleave', () => cursorRing?.classList.remove('hover'));
 });
 
-// Cursor click burst
+// Click spark burst
 document.addEventListener('click', (e) => {
-  for (let i = 0; i < 12; i++) {
-    const angle = (i / 12) * Math.PI * 2;
-    const speed = 1.5 + Math.random() * 3;
+  for (let i = 0; i < 14; i++) {
+    const angle = (i / 14) * Math.PI * 2;
+    const speed = 1.8 + Math.random() * 3.2;
     trail.push({
-      x: e.clientX, y: e.clientY,
-      r: 2 + Math.random() * 4,
+      x: e.clientX,
+      y: e.clientY,
+      r: 2 + Math.random() * 3.5,
       alpha: 0.9,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      color: [212,168,67],
+      color: [229, 190, 101],
       life: 1,
-      decay: 0.03 + Math.random() * 0.04,
+      decay: 0.025 + Math.random() * 0.035,
     });
   }
 });
 
 /* ════════════════════════════════════════════
-   STAR CANVAS (cosmos section)
+   STAR CANVAS BACKGROUND
 ════════════════════════════════════════════ */
 const starCanvas = document.getElementById('star-canvas');
 const sCtx = starCanvas.getContext('2d');
 
-function resizeStars() { starCanvas.width = window.innerWidth; starCanvas.height = window.innerHeight; }
+function resizeStars() {
+  starCanvas.width = window.innerWidth;
+  starCanvas.height = window.innerHeight;
+}
 resizeStars();
 window.addEventListener('resize', resizeStars);
 
-const stars = Array.from({ length: 300 }, () => ({
-  x: Math.random(), y: Math.random(),
-  r: Math.random() < 0.05 ? 1.8 : Math.random() < 0.25 ? 1.1 : 0.5,
+const stars = Array.from({ length: 280 }, () => ({
+  x: Math.random(),
+  y: Math.random(),
+  r: Math.random() < 0.06 ? 1.6 : Math.random() < 0.25 ? 1.0 : 0.5,
   phase: Math.random() * Math.PI * 2,
-  speed: 0.004 + Math.random() * 0.008,
-  base: 0.15 + Math.random() * 0.6,
+  speed: 0.003 + Math.random() * 0.007,
+  base: 0.15 + Math.random() * 0.65,
 }));
 
-// Parallax shift
 let starOffX = 0, starOffY = 0;
 document.addEventListener('mousemove', (e) => {
-  starOffX = (e.clientX / window.innerWidth  - 0.5) * 12;
-  starOffY = (e.clientY / window.innerHeight - 0.5) * 12;
+  starOffX = (e.clientX / window.innerWidth - 0.5) * 14;
+  starOffY = (e.clientY / window.innerHeight - 0.5) * 14;
 });
 
 function drawStars() {
@@ -149,7 +163,7 @@ function drawStars() {
   stars.forEach(s => {
     s.phase += s.speed;
     const a = s.base * (0.4 + 0.6 * Math.abs(Math.sin(s.phase)));
-    const px = (s.x * starCanvas.width  + starOffX + starCanvas.width)  % starCanvas.width;
+    const px = (s.x * starCanvas.width + starOffX + starCanvas.width) % starCanvas.width;
     const py = (s.y * starCanvas.height + starOffY + starCanvas.height) % starCanvas.height;
     sCtx.beginPath();
     sCtx.arc(px, py, s.r, 0, Math.PI * 2);
@@ -163,39 +177,37 @@ drawStars();
 /* ════════════════════════════════════════════
    WATER RIPPLE CANVAS
 ════════════════════════════════════════════ */
-const waterSection = document.getElementById('water');
+const eternitySection = document.getElementById('eternity');
 const rippleCanvas = document.getElementById('ripple-canvas');
 const rCtx = rippleCanvas?.getContext('2d');
 const ripples = [];
 
 function resizeRipple() {
-  if (!rippleCanvas || !waterSection) return;
-  rippleCanvas.width  = waterSection.offsetWidth;
-  rippleCanvas.height = waterSection.offsetHeight;
+  if (!rippleCanvas || !eternitySection) return;
+  rippleCanvas.width = eternitySection.offsetWidth;
+  rippleCanvas.height = eternitySection.offsetHeight;
 }
 resizeRipple();
 window.addEventListener('resize', resizeRipple);
 
 function addRipple(x, y) {
-  ripples.push({ x, y, r: 0, alpha: 0.6, maxR: 180, speed: 3 });
+  ripples.push({ x, y, r: 0, alpha: 0.65, maxR: 190, speed: 2.8 });
 }
 
-waterSection?.addEventListener('click', (e) => {
-  const rect = waterSection.getBoundingClientRect();
+eternitySection?.addEventListener('click', (e) => {
+  const rect = eternitySection.getBoundingClientRect();
   addRipple(e.clientX - rect.left, e.clientY - rect.top);
 });
 
-// Auto ripples
 let autoRippleT = 0;
 function drawRipples(now) {
   if (!rCtx) return;
   rCtx.clearRect(0, 0, rippleCanvas.width, rippleCanvas.height);
 
-  // Occasional auto ripple
-  if (now - autoRippleT > 2800) {
+  if (now - autoRippleT > 3200) {
     addRipple(
-      100 + Math.random() * (rippleCanvas.width - 200),
-      rippleCanvas.height * 0.5 + (Math.random() - 0.5) * 100
+      120 + Math.random() * (rippleCanvas.width - 240),
+      rippleCanvas.height * 0.5 + (Math.random() - 0.5) * 120
     );
     autoRippleT = now;
   }
@@ -203,16 +215,19 @@ function drawRipples(now) {
   for (let i = ripples.length - 1; i >= 0; i--) {
     const rp = ripples[i];
     rp.r += rp.speed;
-    rp.alpha -= 0.008;
-    if (rp.alpha <= 0 || rp.r > rp.maxR) { ripples.splice(i, 1); continue; }
+    rp.alpha -= 0.007;
+    if (rp.alpha <= 0 || rp.r > rp.maxR) {
+      ripples.splice(i, 1);
+      continue;
+    }
     rCtx.beginPath();
     rCtx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-    rCtx.strokeStyle = `rgba(212,168,67,${rp.alpha * 0.5})`;
+    rCtx.strokeStyle = `rgba(229,190,101,${rp.alpha * 0.45})`;
     rCtx.lineWidth = 1.5;
     rCtx.stroke();
 
     rCtx.beginPath();
-    rCtx.arc(rp.x, rp.y, rp.r * 0.6, 0, Math.PI * 2);
+    rCtx.arc(rp.x, rp.y, rp.r * 0.65, 0, Math.PI * 2);
     rCtx.strokeStyle = `rgba(255,255,255,${rp.alpha * 0.2})`;
     rCtx.lineWidth = 1;
     rCtx.stroke();
@@ -222,39 +237,41 @@ function drawRipples(now) {
 requestAnimationFrame(drawRipples);
 
 /* ════════════════════════════════════════════
-   FLOATING LEAVES
+   FLOATING CELESTIAL PARTICLES & LEAF DRIFT
 ════════════════════════════════════════════ */
 const leafLayer = document.getElementById('leaf-layer');
-const leafColors = ['#4a7a2a','#6aaa3a','#8aba50','#a0c060','#c8a040','#d4883a'];
+const leafColors = ['rgba(229,190,101,0.6)', 'rgba(255,245,210,0.5)', 'rgba(120,180,255,0.4)', 'rgba(210,170,90,0.5)'];
 
 function createLeaf() {
   if (!leafLayer) return;
   const leaf = document.createElement('div');
-  leaf.className = 'leaf';
-  const size = 8 + Math.random() * 14;
-  const duration = 8 + Math.random() * 14;
+  const size = 6 + Math.random() * 8;
+  const duration = 12 + Math.random() * 12;
   const startX = Math.random() * window.innerWidth;
-  const driftX = (Math.random() - 0.5) * 200;
+  const driftX = (Math.random() - 0.5) * 220;
+  
   leaf.style.cssText = `
-    left:${startX}px; top:-20px;
-    width:${size}px; height:${size * 0.65}px;
-    background:${leafColors[Math.floor(Math.random()*leafColors.length)]};
-    opacity:0;
-    --lx:${driftX}px;
-    animation-duration:${duration}s;
-    animation-delay:${Math.random() * 5}s;
-    transform-origin:center;
-    border-radius: ${Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%'};
+    position: absolute;
+    left: ${startX}px;
+    top: -20px;
+    width: ${size}px;
+    height: ${size * 0.7}px;
+    background: ${leafColors[Math.floor(Math.random() * leafColors.length)]};
+    border-radius: 50% 0 50% 0;
+    box-shadow: 0 0 10px rgba(229,190,101,0.3);
+    opacity: 0;
+    animation: leafFall ${duration}s linear infinite;
+    --lx: ${driftX}px;
+    pointer-events: none;
   `;
   leafLayer.appendChild(leaf);
-  setTimeout(() => leaf.remove(), (duration + 5) * 1000);
+  setTimeout(() => leaf.remove(), duration * 1000);
 }
 
-// Spawn leaves every 1.5s when in nature/forest section
-setInterval(createLeaf, 1500);
+setInterval(createLeaf, 2200);
 
 /* ════════════════════════════════════════════
-   HEADER SCROLL + SCENE DETECTION
+   HEADER SCROLL & ACTIVE SCENE TRACKING
 ════════════════════════════════════════════ */
 const header = document.getElementById('site-header');
 const scenes = document.querySelectorAll('.scene');
@@ -275,11 +292,11 @@ const sceneObs = new IntersectionObserver((entries) => {
 scenes.forEach(s => sceneObs.observe(s));
 
 window.addEventListener('scroll', () => {
-  header.classList.toggle('solid', window.scrollY > 60);
-}, { passive:true });
+  header.classList.toggle('solid', window.scrollY > 50);
+}, { passive: true });
 
 /* ════════════════════════════════════════════
-   PARALLAX BG (scroll-based)
+   SMOOTH PARALLAX BACKGROUNDS
 ════════════════════════════════════════════ */
 function applyParallax() {
   document.querySelectorAll('.parallax-bg').forEach(bg => {
@@ -291,17 +308,20 @@ function applyParallax() {
     bg.style.transform = `translateY(${offset}px)`;
   });
 }
-window.addEventListener('scroll', applyParallax, { passive:true });
+window.addEventListener('scroll', applyParallax, { passive: true });
 applyParallax();
 
 /* ════════════════════════════════════════════
-   SCROLL REVEAL
+   SCROLL REVEAL (INTERSECTION OBSERVER)
 ════════════════════════════════════════════ */
 const revObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      revObs.unobserve(e.target);
+    }
   });
-}, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
@@ -309,25 +329,38 @@ document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
    HERO TITLE STAGGER
 ════════════════════════════════════════════ */
 document.querySelectorAll('.ht-line').forEach((line, i) => {
-  line.style.cssText = `opacity:0;transform:translateY(50px);transition:opacity 1s ease ${.3+i*.25}s,transform 1s cubic-bezier(.22,1,.36,1) ${.3+i*.25}s`;
-  setTimeout(() => { line.style.opacity='1'; line.style.transform='none'; }, 200);
+  line.style.cssText = `
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1) ${0.2 + i * 0.25}s,
+                transform 1s cubic-bezier(0.2, 1, 0.3, 1) ${0.2 + i * 0.25}s;
+  `;
+  setTimeout(() => {
+    line.style.opacity = '1';
+    line.style.transform = 'none';
+  }, 150);
 });
 
 /* ════════════════════════════════════════════
-   MOBILE MENU
+   MOBILE NAV TOGGLE
 ════════════════════════════════════════════ */
 const ham = document.getElementById('ham');
 const mobNav = document.getElementById('mob-nav');
+
 ham?.addEventListener('click', () => {
   const open = mobNav.classList.toggle('open');
   ham.classList.toggle('open', open);
 });
+
 mobNav?.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => { mobNav.classList.remove('open'); ham.classList.remove('open'); });
+  a.addEventListener('click', () => {
+    mobNav.classList.remove('open');
+    ham.classList.remove('open');
+  });
 });
 
 /* ════════════════════════════════════════════
-   SMOOTH SCROLL
+   SMOOTH SCROLLING FOR ALL ANCHORS
 ════════════════════════════════════════════ */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -335,6 +368,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 68, behavior:'smooth' });
+    const offset = 74;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
   });
 });
