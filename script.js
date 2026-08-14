@@ -64,170 +64,111 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ════════════════════════════════════════════
-   CUSTOM GLASS CURSOR & LIGHT TRAIL
+   HIGH-PERFORMANCE GLASS CURSOR
 ════════════════════════════════════════════ */
 const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 const cursorDot = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
-const cursorCanvas = document.getElementById('cursor-canvas');
-const cCtx = cursorCanvas?.getContext('2d');
 
-let mx = -200, my = -200;
-let rx = -200, ry = -200;
-
-if (!isTouchDevice && cursorCanvas && cCtx) {
-  function resizeCursor() {
-    cursorCanvas.width = window.innerWidth;
-    cursorCanvas.height = window.innerHeight;
-  }
-  resizeCursor();
-  window.addEventListener('resize', resizeCursor);
-
-  const trail = [];
-  const TRAIL_MAX = 35;
+if (!isTouchDevice && cursorDot && cursorRing) {
+  let mx = -200, my = -200;
+  let rx = -200, ry = -200;
+  let cursorActive = false;
 
   document.addEventListener('mousemove', (e) => {
     mx = e.clientX;
     my = e.clientY;
-
-    if (cursorDot) {
-      cursorDot.style.left = mx + 'px';
-      cursorDot.style.top = my + 'px';
+    cursorDot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
+    if (!cursorActive) {
+      cursorActive = true;
+      requestAnimationFrame(animateRing);
     }
+  }, { passive: true });
 
-    trail.push({
-      x: mx,
-      y: my,
-      r: 1.5 + Math.random() * 2.5,
-      alpha: 0.6 + Math.random() * 0.4,
-      vx: (Math.random() - 0.5) * 1.2,
-      vy: (Math.random() - 0.5) * 1.2 - 0.3,
-      color: Math.random() > 0.4 ? [229, 190, 101] : [255, 245, 210],
-      life: 1,
-      decay: 0.02 + Math.random() * 0.03,
-    });
-    if (trail.length > TRAIL_MAX) trail.shift();
-  });
-
-  function animateCursor() {
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    
-    if (cursorRing) {
-      cursorRing.style.left = rx + 'px';
-      cursorRing.style.top = ry + 'px';
+  function animateRing() {
+    rx += (mx - rx) * 0.22;
+    ry += (my - ry) * 0.22;
+    cursorRing.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+    if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
+      requestAnimationFrame(animateRing);
+    } else {
+      cursorActive = false;
     }
-
-    cCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
-    for (let i = trail.length - 1; i >= 0; i--) {
-      const p = trail[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life -= p.decay;
-      if (p.life <= 0) {
-        trail.splice(i, 1);
-        continue;
-      }
-      const [r, g, b] = p.color;
-      const grad = cCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3.5);
-      grad.addColorStop(0, `rgba(${r},${g},${b},${p.alpha * p.life})`);
-      grad.addColorStop(1, 'transparent');
-      cCtx.beginPath();
-      cCtx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2);
-      cCtx.fillStyle = grad;
-      cCtx.fill();
-    }
-    requestAnimationFrame(animateCursor);
   }
-  animateCursor();
 
-  // Delegation for smooth dynamic hover state
-  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .theme-toggle-pill, .mob-theme-btn, .pillar-card, .eternity-card, .insight-item, .summary-card, .verse-explorer-card, .vf-btn, .vec-col, .ks-card, .prophecy-card';
+  // Hover states delegation
+  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .theme-toggle-pill, .mob-theme-btn, .pillar-card, .verse-explorer-card, .vf-btn, .vec-col, .ks-card, .prophecy-card';
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest && e.target.closest(hoverSelectors)) {
-      cursorRing?.classList.add('hover');
+      cursorRing.classList.add('hover');
     }
-  });
+  }, { passive: true });
+
   document.addEventListener('mouseout', (e) => {
     if (e.target.closest && e.target.closest(hoverSelectors)) {
-      cursorRing?.classList.remove('hover');
+      cursorRing.classList.remove('hover');
     }
-  });
-
-  document.addEventListener('click', (e) => {
-    for (let i = 0; i < 14; i++) {
-      const angle = (i / 14) * Math.PI * 2;
-      const speed = 1.8 + Math.random() * 3.2;
-      trail.push({
-        x: e.clientX,
-        y: e.clientY,
-        r: 2 + Math.random() * 3.5,
-        alpha: 0.9,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        color: [229, 190, 101],
-        life: 1,
-        decay: 0.025 + Math.random() * 0.035,
-      });
-    }
-  });
+  }, { passive: true });
 }
 
 /* ════════════════════════════════════════════
-   STAR CANVAS BACKGROUND
+   LIGHTWEIGHT STAR CANVAS BACKGROUND
 ════════════════════════════════════════════ */
 const starCanvas = document.getElementById('star-canvas');
 const sCtx = starCanvas?.getContext('2d');
 
-if (starCanvas && sCtx) {
-  function resizeStars() {
-    starCanvas.width = window.innerWidth;
-    starCanvas.height = window.innerHeight;
-  }
-  resizeStars();
-  window.addEventListener('resize', resizeStars);
+if (starCanvas && sCtx && !isTouchDevice) {
+  let starW = (starCanvas.width = window.innerWidth);
+  let starH = (starCanvas.height = window.innerHeight);
 
-  const stars = Array.from({ length: 260 }, () => ({
+  window.addEventListener('resize', () => {
+    starW = starCanvas.width = window.innerWidth;
+    starH = starCanvas.height = window.innerHeight;
+  }, { passive: true });
+
+  const starCount = 85;
+  const stars = Array.from({ length: starCount }, () => ({
     x: Math.random(),
     y: Math.random(),
-    r: Math.random() < 0.06 ? 1.6 : Math.random() < 0.25 ? 1.0 : 0.5,
+    r: Math.random() < 0.15 ? 1.2 : 0.6,
     phase: Math.random() * Math.PI * 2,
-    speed: 0.003 + Math.random() * 0.007,
-    base: 0.15 + Math.random() * 0.65,
+    speed: 0.005 + Math.random() * 0.01,
+    base: 0.2 + Math.random() * 0.6,
   }));
 
-  let starOffX = 0, starOffY = 0;
-  if (!isTouchDevice) {
-    document.addEventListener('mousemove', (e) => {
-      starOffX = (e.clientX / window.innerWidth - 0.5) * 14;
-      starOffY = (e.clientY / window.innerHeight - 0.5) * 14;
-    });
-  }
+  let isPageVisible = true;
+  document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    if (isPageVisible) requestAnimationFrame(drawStars);
+  });
 
   function drawStars() {
-    sCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
-    stars.forEach(s => {
+    if (!isPageVisible) return;
+    sCtx.clearRect(0, 0, starW, starH);
+    for (let i = 0; i < starCount; i++) {
+      const s = stars[i];
       s.phase += s.speed;
-      const a = s.base * (0.4 + 0.6 * Math.abs(Math.sin(s.phase)));
-      const px = (s.x * starCanvas.width + starOffX + starCanvas.width) % starCanvas.width;
-      const py = (s.y * starCanvas.height + starOffY + starCanvas.height) % starCanvas.height;
+      const a = s.base * (0.5 + 0.5 * Math.sin(s.phase));
+      const px = s.x * starW;
+      const py = s.y * starH;
       sCtx.beginPath();
       sCtx.arc(px, py, s.r, 0, Math.PI * 2);
       sCtx.fillStyle = `rgba(255,255,255,${a})`;
       sCtx.fill();
-    });
+    }
     requestAnimationFrame(drawStars);
   }
-  drawStars();
+  requestAnimationFrame(drawStars);
 }
 
 /* ════════════════════════════════════════════
-   WATER RIPPLE CANVAS (TOUCH & CLICK SUPPORT)
+   INTERACTIVE ON-DEMAND WATER RIPPLE CANVAS
 ════════════════════════════════════════════ */
-const eternitySection = document.getElementById('proverbs8-full') || document.getElementById('eternity');
+const eternitySection = document.getElementById('proverbs8-full');
 const rippleCanvas = document.getElementById('ripple-canvas');
 const rCtx = rippleCanvas?.getContext('2d');
 const ripples = [];
+let rippleAnimating = false;
 
 if (rippleCanvas && rCtx && eternitySection) {
   function resizeRipple() {
@@ -235,90 +176,47 @@ if (rippleCanvas && rCtx && eternitySection) {
     rippleCanvas.height = eternitySection.offsetHeight;
   }
   resizeRipple();
-  window.addEventListener('resize', resizeRipple);
+  window.addEventListener('resize', resizeRipple, { passive: true });
 
   function addRipple(x, y) {
-    ripples.push({ x, y, r: 0, alpha: 0.65, maxR: 190, speed: 2.8 });
+    ripples.push({ x, y, r: 0, alpha: 0.6, maxR: 160, speed: 3 });
+    if (!rippleAnimating) {
+      rippleAnimating = true;
+      requestAnimationFrame(drawRipples);
+    }
   }
 
   eternitySection.addEventListener('pointerdown', (e) => {
     const rect = eternitySection.getBoundingClientRect();
     addRipple(e.clientX - rect.left, e.clientY - rect.top);
-  });
+  }, { passive: true });
 
-  let autoRippleT = 0;
-  function drawRipples(now) {
+  function drawRipples() {
     rCtx.clearRect(0, 0, rippleCanvas.width, rippleCanvas.height);
-
-    if (now - autoRippleT > 3200) {
-      addRipple(
-        120 + Math.random() * (rippleCanvas.width - 240),
-        rippleCanvas.height * 0.5 + (Math.random() - 0.5) * 120
-      );
-      autoRippleT = now;
-    }
-
     for (let i = ripples.length - 1; i >= 0; i--) {
       const rp = ripples[i];
       rp.r += rp.speed;
-      rp.alpha -= 0.007;
+      rp.alpha -= 0.012;
       if (rp.alpha <= 0 || rp.r > rp.maxR) {
         ripples.splice(i, 1);
         continue;
       }
       rCtx.beginPath();
       rCtx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-      rCtx.strokeStyle = `rgba(229,190,101,${rp.alpha * 0.45})`;
+      rCtx.strokeStyle = `rgba(232,190,101,${rp.alpha * 0.5})`;
       rCtx.lineWidth = 1.5;
       rCtx.stroke();
-
-      rCtx.beginPath();
-      rCtx.arc(rp.x, rp.y, rp.r * 0.65, 0, Math.PI * 2);
-      rCtx.strokeStyle = `rgba(255,255,255,${rp.alpha * 0.2})`;
-      rCtx.lineWidth = 1;
-      rCtx.stroke();
     }
-    requestAnimationFrame(drawRipples);
+    if (ripples.length > 0) {
+      requestAnimationFrame(drawRipples);
+    } else {
+      rippleAnimating = false;
+    }
   }
-  requestAnimationFrame(drawRipples);
 }
 
 /* ════════════════════════════════════════════
-   FLOATING CELESTIAL PARTICLES & LEAF DRIFT
-════════════════════════════════════════════ */
-const leafLayer = document.getElementById('leaf-layer');
-const leafColors = ['rgba(229,190,101,0.6)', 'rgba(255,245,210,0.5)', 'rgba(120,180,255,0.4)', 'rgba(210,170,90,0.5)'];
-
-function createLeaf() {
-  if (!leafLayer) return;
-  const leaf = document.createElement('div');
-  const size = 6 + Math.random() * 8;
-  const duration = 12 + Math.random() * 12;
-  const startX = Math.random() * window.innerWidth;
-  const driftX = (Math.random() - 0.5) * 220;
-  
-  leaf.style.cssText = `
-    position: absolute;
-    left: ${startX}px;
-    top: -20px;
-    width: ${size}px;
-    height: ${size * 0.7}px;
-    background: ${leafColors[Math.floor(Math.random() * leafColors.length)]};
-    border-radius: 50% 0 50% 0;
-    box-shadow: 0 0 10px rgba(229,190,101,0.3);
-    opacity: 0;
-    animation: leafFall ${duration}s linear infinite;
-    --lx: ${driftX}px;
-    pointer-events: none;
-  `;
-  leafLayer.appendChild(leaf);
-  setTimeout(() => leaf.remove(), duration * 1000);
-}
-
-setInterval(createLeaf, 2200);
-
-/* ════════════════════════════════════════════
-   HEADER SCROLL & ACTIVE SCENE TRACKING
+   SCENE TRACKING (INTERSECTION OBSERVER)
 ════════════════════════════════════════════ */
 const header = document.getElementById('site-header');
 const scenes = document.querySelectorAll('.scene');
@@ -326,7 +224,7 @@ const navLinks = document.querySelectorAll('.main-nav a');
 
 const sceneObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
       const scene = entry.target.id;
       document.body.setAttribute('data-scene', scene);
       navLinks.forEach(a => {
@@ -334,31 +232,37 @@ const sceneObs = new IntersectionObserver((entries) => {
       });
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.25 });
 
 scenes.forEach(s => sceneObs.observe(s));
 
-window.addEventListener('scroll', () => {
-  header?.classList.toggle('solid', window.scrollY > 50);
-}, { passive: true });
-
 /* ════════════════════════════════════════════
-   SMOOTH PARALLAX BACKGROUNDS
+   THROTTLED PARALLAX BACKGROUNDS
 ════════════════════════════════════════════ */
-function applyParallax() {
+let parallaxTicking = false;
+const parallaxBgs = document.querySelectorAll('.parallax-bg');
+
+function updateParallax() {
   if (isTouchDevice) return;
-  document.querySelectorAll('.parallax-bg').forEach(bg => {
+  const winH = window.innerHeight;
+  parallaxBgs.forEach(bg => {
     const section = bg.closest('.scene');
     if (!section) return;
     const rect = section.getBoundingClientRect();
-    const speed = parseFloat(bg.dataset.speed || 0.2);
-    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    if (rect.bottom < 0 || rect.top > winH) return;
+    const speed = parseFloat(bg.dataset.speed || 0.15);
     const offset = rect.top * speed;
-    bg.style.transform = `translateY(${offset}px)`;
+    bg.style.transform = `translate3d(0, ${offset}px, 0)`;
   });
+  parallaxTicking = false;
 }
-window.addEventListener('scroll', applyParallax, { passive: true });
-applyParallax();
+
+window.addEventListener('scroll', () => {
+  if (!parallaxTicking) {
+    parallaxTicking = true;
+    requestAnimationFrame(updateParallax);
+  }
+}, { passive: true });
 
 /* ════════════════════════════════════════════
    SCROLL REVEAL (INTERSECTION OBSERVER)
@@ -370,7 +274,7 @@ const revObs = new IntersectionObserver((entries) => {
       revObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
@@ -380,14 +284,14 @@ document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 document.querySelectorAll('.ht-line').forEach((line, i) => {
   line.style.cssText = `
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1) ${0.2 + i * 0.25}s,
-                transform 1s cubic-bezier(0.2, 1, 0.3, 1) ${0.2 + i * 0.25}s;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1) ${0.15 + i * 0.2}s,
+                transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) ${0.15 + i * 0.2}s;
   `;
   setTimeout(() => {
     line.style.opacity = '1';
     line.style.transform = 'none';
-  }, 150);
+  }, 100);
 });
 
 /* ════════════════════════════════════════════
