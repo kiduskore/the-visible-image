@@ -36,26 +36,28 @@
           <div class="logo-orb"></div>
           <div class="logo-orb-ring"></div>
         </div>
-        <span class="logo-text" data-en="THE LOGOS" data-am="ቃሉ (ሎጎስ)">THE LOGOS</span>
+        <span class="logo-text" data-en="THE LOGOS" data-simple="THE WORD" data-am="ቃሉ (ሎጎስ)">THE LOGOS</span>
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="main-nav" aria-label="Main Navigation">
-        <a href="#cosmos" class="nav-item glass-link active" data-en="Revelation" data-am="ራዕዩ">Revelation</a>
-        <a href="#invisible" class="nav-item glass-link" data-en="Invisible God" data-am="የማይታየው">Invisible God</a>
-        <a href="#eternity" class="nav-item glass-link" data-en="Proverbs 8 & Eternity" data-am="ምሳሌ 8 እና ዘላለም">Proverbs 8 & Eternity</a>
-        <a href="#firstborn" class="nav-item glass-link" data-en="Firstborn" data-am="ፊተኛው">Firstborn</a>
-        <a href="#foundation" class="nav-item glass-link" data-en="Foundation" data-am="መሠረቱ">Foundation</a>
-        <a href="#divinity" class="nav-item glass-link" data-en="Divinity" data-am="መለኮቱ">Divinity</a>
+        <a href="#cosmos" class="nav-item glass-link active" data-en="Revelation" data-simple="Introduction" data-am="ራዕዩ">Revelation</a>
+        <a href="#invisible" class="nav-item glass-link" data-en="Invisible God" data-simple="God Made Visible" data-am="የማይታየው">Invisible God</a>
+        <a href="#eternity" class="nav-item glass-link" data-en="Proverbs 8 & Eternity" data-simple="Before Time Began" data-am="ምሳሌ 8 እና ዘላለም">Proverbs 8 & Eternity</a>
+        <a href="#firstborn" class="nav-item glass-link" data-en="Firstborn" data-simple="What Firstborn Means" data-am="ከሁሉ ፊተኛው">Firstborn</a>
+        <a href="#foundation" class="nav-item glass-link" data-en="Foundation" data-simple="Creator of All" data-am="የሁሉ መሠረት">Foundation</a>
+        <a href="#divinity" class="nav-item glass-link" data-en="Full Divinity" data-simple="Jesus is God" data-am="መለኮትነቱ">Full Divinity</a>
       </nav>
 
       <!-- Right Controls -->
       <div class="header-actions">
-        <!-- Language Switcher -->
-        <div class="lang-switcher" role="group" aria-label="Language / ቋንቋ">
-          <button class="lb active" id="lb-en" onclick="setLang('en')">EN</button>
+        <!-- 3-Way Language / Reading Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Language / Mode Switcher">
+          <button class="lb active" id="lb-en" onclick="setLang('en')" title="Full Theological English">EN</button>
           <span class="lb-sep"></span>
-          <button class="lb" id="lb-am" onclick="setLang('am')">አማ</button>
+          <button class="lb" id="lb-simple" onclick="setLang('simple')" title="Simple English for Easy Reading">SIMPLE</button>
+          <span class="lb-sep"></span>
+          <button class="lb" id="lb-am" onclick="setLang('am')" title="አማርኛ (Amharic)">አማ</button>
         </div>
 
         <!-- Mobile Menu Toggle -->
@@ -69,12 +71,12 @@
 
   <!-- Mobile Dropdown Menu -->
   <div class="mob-dropdown glass-card" id="mob-nav">
-    <a href="#cosmos" class="mob-link" data-en="The Revelation" data-am="ራዕዩ">The Revelation</a>
-    <a href="#invisible" class="mob-link" data-en="The Invisible God" data-am="የማይታየው አምላክ">The Invisible God</a>
-    <a href="#eternity" class="mob-link" data-en="Proverbs 8 & Eternity" data-am="ምሳሌ 8 እና ዘላለም">Proverbs 8 & Eternity</a>
-    <a href="#firstborn" class="mob-link" data-en="The Firstborn" data-am="ከሁሉ ፊተኛው">The Firstborn</a>
-    <a href="#foundation" class="mob-link" data-en="The Foundation" data-am="የሁሉ መሠረት">The Foundation</a>
-    <a href="#divinity" class="mob-link" data-en="Full Divinity" data-am="ሙሉ መለኮትነቱ">Full Divinity</a>
+    <a href="#cosmos" class="mob-link" data-en="The Revelation" data-simple="Introduction" data-am="ራዕዩ">The Revelation</a>
+    <a href="#invisible" class="mob-link" data-en="The Invisible God" data-simple="God Made Visible" data-am="የማይታየው አምላክ">The Invisible God</a>
+    <a href="#eternity" class="mob-link" data-en="Proverbs 8 & Eternity" data-simple="Before Time Began" data-am="ምሳሌ 8 እና ዘላለም">Proverbs 8 & Eternity</a>
+    <a href="#firstborn" class="mob-link" data-en="The Firstborn" data-simple="What Firstborn Means" data-am="ከሁሉ ፊተኛው">The Firstborn</a>
+    <a href="#foundation" class="mob-link" data-en="The Foundation" data-simple="Creator of All" data-am="የሁሉ መሠረት">The Foundation</a>
+    <a href="#divinity" class="mob-link" data-en="Full Divinity" data-simple="Jesus is God" data-am="ሙሉ መለኮትነቱ">Full Divinity</a>
   </div>
 </header>
 
@@ -88,25 +90,28 @@
   <div class="scene-content content-center">
     <div class="glass-badge reveal">
       <span class="badge-dot"></span>
-      <span data-en="John 1:1 · Colossians 1:15 · Proverbs 8:22" data-am="ዮሐንስ 1:1 · ቆላስይስ 1:15 · ምሳሌ 8:22">John 1:1 · Colossians 1:15 · Proverbs 8:22</span>
+      <span data-en="John 1:1 · Colossians 1:15 · Proverbs 8:22" data-simple="John 1:1 · Colossians 1:15 · Simple Guide" data-am="ዮሐንስ 1:1 · ቆላስይስ 1:15 · ምሳሌ 8:22">John 1:1 · Colossians 1:15 · Proverbs 8:22</span>
     </div>
 
     <h1 class="hero-title reveal">
-      <span class="ht-line" data-en="God Made Himself" data-am="እግዚአብሔር ራሱን">God Made Himself</span>
-      <span class="ht-line gold-shimmer" data-en="Visible to the World" data-am="ለዓለም ግልጽ አደረገ">Visible to the World</span>
+      <span class="ht-line" data-en="God Made Himself" data-simple="God Revealed Himself" data-am="እግዚአብሔር ራሱን">God Made Himself</span>
+      <span class="ht-line gold-shimmer" data-en="Visible to the World" data-simple="Before Making the Universe" data-am="ለዓለም ግልጽ አደረገ">Visible to the World</span>
     </h1>
 
-    <p class="scene-sub reveal" data-en="Before creating the physical universe and humankind, the eternal, invisible God chose to reveal His unapproachable glory through the Son. This is the heartbeat of the New Testament." data-am="ሥጋዊው ዓለምና የሰው ልጅ ከመፈጠሩ በፊት፣ ዘላለማዊውና የማይታየው እግዚአብሔር የማይቀረበውን ክብሩን በልጁ ግልጽ ለማድረግ መረጠ። ይህ የአዲስ ኪዳን ልብ ነው።">
+    <p class="scene-sub reveal" 
+       data-en="Before creating the physical universe and humankind, the eternal, invisible God chose to reveal His unapproachable glory through the Son. This is the heartbeat of the New Testament." 
+       data-simple="Before God created the stars, the Earth, or human beings, He made Himself known through His Son. Because God is spirit, Jesus is the visible image of who God is." 
+       data-am="ሥጋዊው ዓለምና የሰው ልጅ ከመፈጠሩ በፊት፣ ዘላለማዊውና የማይታየው እግዚአብሔር የማይቀረበውን ክብሩን በልጁ ግልጽ ለማድረግ መረጠ። ይህ የአዲስ ኪዳን ልብ ነው።">
       Before creating the physical universe and humankind, the eternal, invisible God chose to reveal His unapproachable glory through the Son. This is the heartbeat of the New Testament.
     </p>
 
     <div class="hero-actions reveal">
       <a class="glass-btn primary" href="#invisible">
-        <span class="btn-text" data-en="Explore the Truth" data-am="እውነቱን ዳስስ">Explore the Truth</span>
+        <span class="btn-text" data-en="Explore the Truth" data-simple="Start Reading" data-am="እውነቱን ዳስስ">Explore the Truth</span>
         <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a class="glass-btn secondary" href="#eternity">
-        <span class="btn-text" data-en="Proverbs 8 Revelation" data-am="የምሳሌ 8 ራዕይ">Proverbs 8 Revelation</span>
+        <span class="btn-text" data-en="Proverbs 8 Revelation" data-simple="Before Creation (Prov 8)" data-am="የምሳሌ 8 ራዕይ">Proverbs 8 Revelation</span>
       </a>
     </div>
   </div>
@@ -114,7 +119,7 @@
   <div class="scroll-hint">
     <div class="sh-pill glass-pill">
       <div class="sh-dot"></div>
-      <span data-en="SCROLL TO EXPLORE" data-am="ወደ ታች ይሸብልሉ">SCROLL TO EXPLORE</span>
+      <span data-en="SCROLL TO EXPLORE" data-simple="SCROLL DOWN" data-am="ወደ ታች ይሸብልሉ">SCROLL TO EXPLORE</span>
     </div>
   </div>
 </section>
@@ -129,19 +134,28 @@
   <div class="scene-content content-split">
     <div class="glass-card reveal">
       <div class="card-header">
-        <span class="tag-glass" data-en="Point 01 · The Mystery" data-am="ነጥብ 01 · ምስጢሩ">Point 01 · The Mystery</span>
-        <span class="scripture-badge" data-en="Hebrews 1:3" data-am="ዕብራውያን 1:3">Hebrews 1:3</span>
+        <span class="tag-glass" data-en="Point 01 · The Mystery" data-simple="Point 1 · The Core Truth" data-am="ነጥብ 01 · ታላቁ ምስጢር">Point 01 · The Mystery</span>
+        <span class="scripture-badge" data-en="Hebrews 1:3" data-simple="Hebrews 1:3" data-am="ዕብራውያን 1:3">Hebrews 1:3</span>
       </div>
-      <h2 class="card-title" data-en="The Visible Expression of the Invisible God" data-am="የማይታየው እግዚአብሔር የሚታይ ገጽታ">The Visible Expression of the Invisible God</h2>
-      <p class="card-body" data-en="Because God is spirit and essentially invisible, transcendent above the physical senses, He chose to reveal Himself perfectly through the Son. The Son is not an inferior copy; He is the exact, visible representation of God's infinite being. If anyone desires to perceive what the invisible God is like, they look upon the Son." data-am="እግዚአብሔር በባሕርዩ መንፈስና የማይታይ በመሆኑ፣ ከሥጋዊ ህዋሳት ሁሉ የላቀ ነው፤ ነገር ግን ራሱን በልጁ ፍጹም አድርጎ ለመግለጥ መረጠ። ልጁ ዝቅ ያለ ቅጂ ሳይሆን፣ የእግዚአብሔር ህልውና ትክክለኛና የሚታይ መገለጫ ነው። የማይታየው እግዚአብሔር ምን እንደሚመስል ማወቅ የሚሻ ሰው ልጁን ይመለከታል።">
+      <h2 class="card-title" 
+          data-en="The Visible Expression of the Invisible God" 
+          data-simple="How We Can See the Invisible God" 
+          data-am="የማይታየው እግዚአብሔር የሚታይ ገጽታ">The Visible Expression of the Invisible God</h2>
+      
+      <p class="card-body" 
+         data-en="Because God is spirit and essentially invisible, transcendent above the physical senses, He chose to reveal Himself perfectly through the Son. The Son is not an inferior copy; He is the exact, visible representation of God's infinite being. If anyone desires to perceive what the invisible God is like, they look upon the Son." 
+         data-simple="God is spirit, which means no human eye can see Him directly. So God revealed Himself completely in His Son, Jesus. Jesus shows us exactly what God's heart, love, and character look like. If you want to see God, look at Jesus." 
+         data-am="እግዚአብሔር በባሕርዩ መንፈስና የማይታይ በመሆኑ፣ ከሥጋዊ ህዋሳት ሁሉ የላቀ ነው፤ ነገር ግን ራሱን በልጁ ፍጹም አድርጎ ለመግለጥ መረጠ። ልጁ ዝቅ ያለ ቅጂ ሳይሆን፣ የእግዚአብሔር ህልውና ትክክለኛና የሚታይ መገለጫ ነው። የማይታየው እግዚአብሔር ምን እንደሚመስል ማወቅ የሚሻ ሰው ልጁን ይመለከታል።">
         Because God is spirit and essentially invisible, transcendent above the physical senses, He chose to reveal Himself perfectly through the Son. The Son is not an inferior copy; He is the exact, visible representation of God's infinite being. If anyone desires to perceive what the invisible God is like, they look upon the Son.
       </p>
 
       <div class="glass-quote">
-        <p data-en='"The Son is the radiance of God’s glory and the exact representation of His being, sustaining all things by His powerful word."' data-am='"ልጁ የእግዚአብሔር ክብር ብርሃን፣ የባሕርዩም ትክክለኛ ምሳሌ ነው፤ ሁሉንም በኃይለ ቃሉ ደግፎ ይዟል።"'>
+        <p data-en='"The Son is the radiance of God’s glory and the exact representation of His being, sustaining all things by His powerful word."' 
+           data-simple='"The Son reflects the shining brightness of God’s glory and is the exact likeness of God’s being."' 
+           data-am='"ልጁ የእግዚአብሔር ክብር ብርሃን፣ የባሕርዩም ትክክለኛ ምሳሌ ነው፤ ሁሉንም በኃይለ ቃሉ ደግፎ ይዟል።"'>
           "The Son is the radiance of God’s glory and the exact representation of His being, sustaining all things by His powerful word."
         </p>
-        <cite data-en="— Hebrews 1:3" data-am="— ዕብራውያን 1:3">— Hebrews 1:3</cite>
+        <cite data-en="— Hebrews 1:3" data-simple="— Hebrews 1:3 (Easy to understand)" data-am="— ዕብራውያን 1:3">— Hebrews 1:3</cite>
       </div>
     </div>
 
@@ -149,15 +163,19 @@
       <div class="insight-item glass-card mini">
         <div class="insight-icon">✦</div>
         <div class="insight-content">
-          <h3 data-en="Perfect Mirror" data-am="ፍጹም መስተዋት">Perfect Mirror</h3>
-          <p data-en="Christ manifests the moral, relational, and divine heart of the Father to creation." data-am="ክርስቶስ የአብን መለኮታዊ ፍቅር፣ ርህራሄና ቅድስና ለፍጥረት ሁሉ ያንጸባርቃል።">Christ manifests the moral, relational, and divine heart of the Father to creation.</p>
+          <h3 data-en="Perfect Mirror" data-simple="A Perfect Picture" data-am="ፍጹም መስተዋት">Perfect Mirror</h3>
+          <p data-en="Christ manifests the moral, relational, and divine heart of the Father to creation." 
+             data-simple="Jesus shows us God’s perfect love, mercy, and goodness in a way we can understand." 
+             data-am="ክርስቶስ የአብን መለኮታዊ ፍቅር፣ ርህራሄና ቅድስና ለፍጥረት ሁሉ ያንጸባርቃል።">Christ manifests the moral, relational, and divine heart of the Father to creation.</p>
         </div>
       </div>
       <div class="insight-item glass-card mini">
         <div class="insight-icon">☀</div>
         <div class="insight-content">
-          <h3 data-en="The Radiant Sun Analogy" data-am="የፀሐይ ብርሃን ምሳሌ">The Radiant Sun Analogy</h3>
-          <p data-en="Just as sunlight is the indispensable radiance of the sun itself, the Son carries the full presence of God to the universe." data-am="የፀሐይ ጨረር የፀሐይዋ ህልውና መገለጫ እንደሆነው፣ ልጁም የእግዚአብሔርን ሙሉ ክብር ይሸከማል።">Just as sunlight is the indispensable radiance of the sun itself, the Son carries the full presence of God to the universe.</p>
+          <h3 data-en="The Radiant Sun Analogy" data-simple="The Sun and Sunlight" data-am="የፀሐይ ብርሃን ምሳሌ">The Radiant Sun Analogy</h3>
+          <p data-en="Just as sunlight is the indispensable radiance of the sun itself, the Son carries the full presence of God to the universe." 
+             data-simple="Just like sunlight brings the warmth and light of the sun to earth, Jesus brings the true reality of God to us." 
+             data-am="የፀሐይ ጨረር የፀሐይዋ ህልውና መገለጫ እንደሆነው፣ ልጁም የእግዚአብሔርን ሙሉ ክብር ይሸከማል።">Just as sunlight is the indispensable radiance of the sun itself, the Son carries the full presence of God to the universe.</p>
         </div>
       </div>
     </div>
@@ -175,38 +193,51 @@
   <div class="scene-content content-center">
     <div class="glass-badge reveal">
       <span class="badge-dot gold"></span>
-      <span data-en="Proverbs 8:22–31 · John 1:1–2" data-am="ምሳሌ 8:22–31 · ዮሐንስ 1:1–2">Proverbs 8:22–31 · John 1:1–2</span>
+      <span data-en="Proverbs 8:22–31 · John 1:1–2" data-simple="Proverbs 8 · Before Time Started" data-am="ምሳሌ 8:22–31 · ዮሐንስ 1:1–2">Proverbs 8:22–31 · John 1:1–2</span>
     </div>
 
-    <h2 class="scene-title-lg reveal" data-en="God Revealed Himself Before Creation & Time" data-am="እግዚአብሔር ከፍጥረትና ከጊዜ በፊት ራሱን ገለጠ">God Revealed Himself Before Creation & Time</h2>
-    <p class="section-lead reveal" data-en="Proverbs 8 reveals the profound Old Testament blueprint of what John 1 unfolds: before the dawn of physical time, space, oceans, or mountains, God revealed Himself through His living Wisdom and Word." data-am="ምሳሌ 8 በዮሐንስ 1 የተገለጠውን ጥልቅ መለኮታዊ እውነት አስቀድሞ ይመሰክራል፡ ሥጋዊ ጊዜ፣ ሕዋ፣ ውቅያኖስ ወይም ተራራ ሳይፈጠር፣ እግዚአብሔር በሕያው ጥበቡና ቃሉ ራሱን ገለጠ።">
+    <h2 class="scene-title-lg reveal" 
+        data-en="God Revealed Himself Before Creation & Time" 
+        data-simple="Jesus Existed Before Time and Space" 
+        data-am="እግዚአብሔር ከፍጥረትና ከጊዜ በፊት ራሱን ገለጠ">God Revealed Himself Before Creation & Time</h2>
+    
+    <p class="section-lead reveal" 
+       data-en="Proverbs 8 reveals the profound Old Testament blueprint of what John 1 unfolds: before the dawn of physical time, space, oceans, or mountains, God revealed Himself through His living Wisdom and Word." 
+       data-simple="Proverbs 8 in the Old Testament explains that God's Wisdom was with Him before the mountains, the oceans, or time existed. This Wisdom is the eternal Word (Jesus) who made all things." 
+       data-am="ምሳሌ 8 በዮሐንስ 1 የተገለጠውን ጥልቅ መለኮታዊ እውነት አስቀድሞ ይመሰክራል፡ ሥጋዊ ጊዜ፣ ሕዋ፣ ውቅያኖስ ወይም ተራራ ሳይፈጠር፣ እግዚአብሔር በሕያው ጥበቡና ቃሉ ራሱን ገለጠ።">
       Proverbs 8 reveals the profound Old Testament blueprint of what John 1 unfolds: before the dawn of physical time, space, oceans, or mountains, God revealed Himself through His living Wisdom and Word.
     </p>
 
     <!-- PROVERBS 8 SPOTLIGHT SHOWCASE -->
     <div class="proverbs-spotlight glass-card reveal">
       <div class="card-header">
-        <span class="tag-glass" data-en="The Ancient Voice of Proverbs 8:22–30" data-am="የምሳሌ 8:22–30 ጥንታዊ ምስክርነት">The Ancient Voice of Proverbs 8:22–30</span>
-        <span class="scripture-badge" data-en="Eternity Past" data-am="ከዘላለም በፊት">Eternity Past</span>
+        <span class="tag-glass" data-en="The Ancient Voice of Proverbs 8:22–30" data-simple="Bible Verse: Proverbs 8:22–30" data-am="የምሳሌ 8:22–30 ጥንታዊ ምስክርነት">The Ancient Voice of Proverbs 8:22–30</span>
+        <span class="scripture-badge" data-en="Eternity Past" data-simple="Before Creation" data-am="ከዘላለም በፊት">Eternity Past</span>
       </div>
 
       <div class="proverbs-grid">
         <div class="prov-block">
           <div class="prov-icon">✦</div>
-          <h4 data-en="Before the Earth Existed" data-am="ምድር ከመፈጠሯ በፊት">Before the Earth Existed</h4>
-          <p class="prov-quote" data-en='"The LORD possessed me at the beginning of His work, the first of His acts of old. Ages ago I was set up, at the first, before the beginning of the earth."' data-am='"እግዚአብሔር የመንገዱ መጀመሪያ አደረገኝ፥ ከጥንት ጀምሮ ከሥራው አስቀድሞ። ከዘላለም ጀምሮ አስቀድሞ ከምድር መፈጠር በፊት ተሾምሁ።"'>
+          <h4 data-en="Before the Earth Existed" data-simple="Before the Earth was Made" data-am="ምድር ከመፈጠሯ በፊት">Before the Earth Existed</h4>
+          <p class="prov-quote" 
+             data-en='"The LORD possessed me at the beginning of His work, the first of His acts of old. Ages ago I was set up, at the first, before the beginning of the earth."' 
+             data-simple='"The Lord had me before He began His work, before His oldest deeds. I was appointed in eternity past, before the earth began."' 
+             data-am='"እግዚአብሔር የመንገዱ መጀመሪያ አደረገኝ፥ ከጥንት ጀምሮ ከሥራው አስቀድሞ። ከዘላለም ጀምሮ አስቀድሞ ከምድር መፈጠር በፊት ተሾምሁ።"'>
             "The LORD possessed me at the beginning of His work, the first of His acts of old. Ages ago I was set up, at the first, before the beginning of the earth."
           </p>
-          <span class="prov-ref" data-en="— Proverbs 8:22–23" data-am="— ምሳሌ 8:22–23">— Proverbs 8:22–23</span>
+          <span class="prov-ref" data-en="— Proverbs 8:22–23" data-simple="— Proverbs 8:22–23" data-am="— ምሳሌ 8:22–23">— Proverbs 8:22–23</span>
         </div>
 
         <div class="prov-block">
           <div class="prov-icon">☀</div>
-          <h4 data-en="Beside Him as Master Workman" data-am="በእርሱ ዘንድ ዋና ሠራተኛ">Beside Him as Master Workman</h4>
-          <p class="prov-quote" data-en='"When He marked out the foundations of the earth, then I was beside Him, like a master workman; and I was daily His delight, rejoicing before Him always."' data-am='"የምድርን መሠረት ባጸና ጊዜ፥ የዚያን ጊዜ እኔ በእርሱ ዘንድ ዋና ሠራተኛ ነበርሁ፥ ዕለት ዕለት ደስታው ነበርሁ፥ በፊቱም ሁልጊዜ ደስ ይለኝ ነበር።"'>
+          <h4 data-en="Beside Him as Master Workman" data-simple="Beside Him as the Master Builder" data-am="በእርሱ ዘንድ ዋና ሠራተኛ">Beside Him as Master Workman</h4>
+          <p class="prov-quote" 
+             data-en='"When He marked out the foundations of the earth, then I was beside Him, like a master workman; and I was daily His delight, rejoicing before Him always."' 
+             data-simple='"When God set the foundations of the earth, I was right beside Him as a master builder. I was His daily delight, full of joy before Him."' 
+             data-am='"የምድርን መሠረት ባጸና ጊዜ፥ የዚያን ጊዜ እኔ በእርሱ ዘንድ ዋና ሠራተኛ ነበርሁ፥ ዕለት ዕለት ደስታው ነበርሁ፥ በፊቱም ሁልጊዜ ደስ ይለኝ ነበር።"'>
             "When He marked out the foundations of the earth, then I was beside Him, like a master workman; and I was daily His delight, rejoicing before Him always."
           </p>
-          <span class="prov-ref" data-en="— Proverbs 8:29–30" data-am="— ምሳሌ 8:29–30">— Proverbs 8:29–30</span>
+          <span class="prov-ref" data-en="— Proverbs 8:29–30" data-simple="— Proverbs 8:29–30" data-am="— ምሳሌ 8:29–30">— Proverbs 8:29–30</span>
         </div>
       </div>
     </div>
@@ -215,26 +246,32 @@
     <div class="eternity-grid">
       <div class="eternity-card glass-card reveal">
         <div class="et-num">01</div>
-        <h3 data-en="Eternally Pre-Existent" data-am="ዘላለማዊ ህልውና">Eternally Pre-Existent</h3>
-        <p data-en="The Son (the Word / Logos / Wisdom) existed in eternity past with the Father—uncreated, self-existent, and sharing divine fellowship before any physical atom or ticking of time began." data-am="ልጁ (ቃሉ / ሎጎስ / ጥበብ) ምንም ዓይነት ሥጋዊ ፍጥረት ወይም የጊዜ ጅማሬ ሳይኖር ከአብ ጋር በዘላለም ነበረ — ያልተፈጠረ፣ ዘላለማዊ አምላክ።">The Son (the Word / Logos / Wisdom) existed in eternity past with the Father—uncreated, self-existent, and sharing divine fellowship before any physical atom or ticking of time began.</p>
+        <h3 data-en="Eternally Pre-Existent" data-simple="Always Existed" data-am="ዘላለማዊ ህልውና">Eternally Pre-Existent</h3>
+        <p data-en="The Son (the Word / Logos / Wisdom) existed in eternity past with the Father—uncreated, self-existent, and sharing divine fellowship before any physical atom or ticking of time began." 
+           data-simple="Jesus was never created. He has always existed with God the Father before time, space, and atoms were made." 
+           data-am="ልጁ (ቃሉ / ሎጎስ / ጥበብ) ምንም ዓይነት ሥጋዊ ፍጥረት ወይም የጊዜ ጅማሬ ሳይኖር ከአብ ጋር በዘላለም ነበረ — ያልተፈጠረ፣ ዘላለማዊ አምላክ።">The Son (the Word / Logos / Wisdom) existed in eternity past with the Father—uncreated, self-existent, and sharing divine fellowship before any physical atom or ticking of time began.</p>
       </div>
 
       <div class="eternity-card glass-card reveal delay1">
         <div class="et-num">02</div>
-        <h3 data-en="The Manifestation of Glory" data-am="የክብሩ መገለጥ">The Manifestation of Glory</h3>
-        <p data-en="He was the glorious manifestation of God's presence before the cosmos began. Creation was not an experiment; it was the overflowing joy of His eternal fellowship." data-am="ዓለማት ከመጀመራቸው በፊት የእግዚአብሔር ክብር ግልጽ ማሳያ ነበረ። ፍጥረት የዘላለማዊ ህልውናውና ደስታው መፍሰሻ ነው።">He was the glorious manifestation of God's presence before the cosmos began. Creation was not an experiment; it was the overflowing joy of His eternal fellowship.</p>
+        <h3 data-en="The Manifestation of Glory" data-simple="Showing God's Glory" data-am="የክብሩ መገለጥ">The Manifestation of Glory</h3>
+        <p data-en="He was the glorious manifestation of God's presence before the cosmos began. Creation was not an experiment; it was the overflowing joy of His eternal fellowship." 
+           data-simple="Creating the universe was not an accident. God created everything out of the eternal love and joy between the Father and the Son." 
+           data-am="ዓለማት ከመጀመራቸው በፊት የእግዚአብሔር ክብር ግልጽ ማሳያ ነበረ። ፍጥረት የዘላለማዊ ህልውናውና ደስታው መፍሰሻ ነው።">He was the glorious manifestation of God's presence before the cosmos began. Creation was not an experiment; it was the overflowing joy of His eternal fellowship.</p>
       </div>
 
       <div class="eternity-card glass-card reveal delay2">
         <div class="et-num">03</div>
-        <h3 data-en="The Master Architect" data-am="ዋናው አርክቴክት">The Master Architect</h3>
-        <p data-en="As Proverbs 8:30 declares: 'I was beside Him like a master workman.' He is the active wisdom through whom the cosmos, gravity, and life were fashioned." data-am="ምሳሌ 8:30 እንደሚናገረው፡ 'በእርሱ ዘንድ ዋና ሠራተኛ ነበርሁ።' መላው አጽናፈ ዓለም፣ የተፈጥሮ ሥርዓትና ሕይወት የተነደፈበት ሕያው ጥበብ ነው።">As Proverbs 8:30 declares: 'I was beside Him like a master workman.' He is the active wisdom through whom the cosmos, gravity, and life were fashioned.</p>
+        <h3 data-en="The Master Architect" data-simple="The Master Builder" data-am="ዋናው አርክቴክት">The Master Architect</h3>
+        <p data-en="As Proverbs 8:30 declares: 'I was beside Him like a master workman.' He is the active wisdom through whom the cosmos, gravity, and life were fashioned." 
+           data-simple="Proverbs 8:30 says Wisdom was the master workman beside God. Jesus is the divine Architect who designed the stars, nature, and human life." 
+           data-am="ምሳሌ 8:30 እንደሚናገረው፡ 'በእርሱ ዘንድ ዋና ሠራተኛ ነበርሁ።' መላው አጽናፈ ዓለም፣ የተፈጥሮ ሥርዓትና ሕይወት የተነደፈበት ሕያው ጥበብ ነው።">As Proverbs 8:30 declares: 'I was beside Him like a master workman.' He is the active wisdom through whom the cosmos, gravity, and life were fashioned.</p>
       </div>
     </div>
 
     <div class="interactive-hint glass-pill reveal">
       <span class="hint-sparkle">✦</span>
-      <span data-en="Click anywhere on the tranquil water to generate ripples of life" data-am="በጸጥ ባለው ውሃ ላይ ጠቅ በማድረግ የሕይወት ሞገዶችን ይፍጠሩ">Click anywhere on the tranquil water to generate ripples of life</span>
+      <span data-en="Click anywhere on the tranquil water to generate ripples of life" data-simple="Tap or click the water to see gentle waves" data-am="በጸጥ ባለው ውሃ ላይ ጠቅ በማድረግ የሕይወት ሞገዶችን ይፍጠሩ">Click anywhere on the tranquil water to generate ripples of life</span>
     </div>
   </div>
 </section>
@@ -249,33 +286,46 @@
   <div class="scene-content content-split reverse">
     <div class="glass-card main-explain reveal">
       <div class="card-header">
-        <span class="tag-glass" data-en="Point 03 · Theological Clarity" data-am="ነጥብ 03 · የቃሉ ትርጓሜ">Point 03 · Theological Clarity</span>
-        <span class="scripture-badge" data-en="Colossians 1:15" data-am="ቆላስይስ 1:15">Colossians 1:15</span>
+        <span class="tag-glass" data-en="Point 03 · Theological Clarity" data-simple="Point 3 · Clear Explanation" data-am="ነጥብ 03 · የቃሉ ጥልቅ ትርጓሜ">Point 03 · Theological Clarity</span>
+        <span class="scripture-badge" data-en="Colossians 1:15" data-simple="Colossians 1:15" data-am="ቆላስይስ 1:15">Colossians 1:15</span>
       </div>
-      <h2 class="card-title" data-en="The True Meaning of 'Firstborn' (Prototokos)" data-am="'ከፍጥረት ሁሉ ፊተኛ' ትክክለኛ ትርጉም">The True Meaning of 'Firstborn' (Prototokos)</h2>
-      <p class="card-body" data-en="In ancient biblical culture, 'firstborn' (Greek: Prototokos) was never about chronological birth order or being the first created thing. Rather, it was a title of supreme ranking, sovereignty, inheritance, and universal authority. Christ is 'firstborn' because He stands over and prior to all creation as its Sovereign Heir and Originator." data-am="በመጽሐፍ ቅዱስ ባህል 'በኩር' ወይም 'ፊተኛ' (ግሪክ፡ ፕሮቶቶኮስ) የልደት ቅደም ተከተልን ወይም የመጀመሪያ ፍጡር መሆንን አያመለክትም። ይልቁንም የላቀ ማዕረግ፣ ፍጹም ሥልጣንና የሁሉ ነገር ወራሽ መሆንን ያሳያል። ክርስቶስ 'ከፍጥረት ሁሉ ፊተኛ' የተባለው በሁሉ ላይ የበላይ፣ ገዢና የሁሉ መገኛ ስለሆነ ነው።">
+      <h2 class="card-title" 
+          data-en="The True Meaning of 'Firstborn' (Prototokos)" 
+          data-simple="What Does 'Firstborn' Really Mean?" 
+          data-am="'ከፍጥረት ሁሉ ፊተኛ' ትክክለኛ ትርጉም">The True Meaning of 'Firstborn' (Prototokos)</h2>
+      
+      <p class="card-body" 
+         data-en="In ancient biblical culture, 'firstborn' (Greek: Prototokos) was never about chronological birth order or being the first created thing. Rather, it was a title of supreme ranking, sovereignty, inheritance, and universal authority. Christ is 'firstborn' because He stands over and prior to all creation as its Sovereign Heir and Originator." 
+         data-simple="Calling Jesus the 'Firstborn' does NOT mean He was the first thing God created. In the Bible, 'Firstborn' means Supreme Ruler, Heir, and King over everything. Jesus is called Firstborn because He created everything and owns everything." 
+         data-am="በመጽሐፍ ቅዱስ ባህል 'በኩር' ወይም 'ፊተኛ' (ግሪክ፡ ፕሮቶቶኮስ) የልደት ቅደም ተከተልን ወይም የመጀመሪያ ፍጡር መሆንን አያመለክትም። ይልቁንም የላቀ ማዕረግ፣ ፍጹም ሥልጣንና የሁሉ ነገር ወራሽ መሆንን ያሳያል። ክርስቶስ 'ከፍጥረት ሁሉ ፊተኛ' የተባለው በሁሉ ላይ የበላይ፣ ገዢና የሁሉ መገኛ ስለሆነ ነው።">
         In ancient biblical culture, 'firstborn' (Greek: Prototokos) was never about chronological birth order or being the first created thing. Rather, it was a title of supreme ranking, sovereignty, inheritance, and universal authority. Christ is 'firstborn' because He stands over and prior to all creation as its Sovereign Heir and Originator.
       </p>
 
       <div class="verse-callout glass-panel">
         <div class="vc-icon">⚖</div>
         <div class="vc-body">
-          <h4 data-en="Supreme Heir, Not First Creation" data-am="የሁሉ ወራሽ እንጂ ፍጡር አይደለም">Supreme Heir, Not First Creation</h4>
-          <p data-en="You cannot be created through someone who is created. Paul explicitly clarifies: 'For by Him ALL things were created.' He is the Creator, not part of the creaturely inventory." data-am="ጳውሎስ ወዲያውኑ ግልጽ ያደርገዋል፡ 'ሁሉ በእርሱ ተፈጥሯልና።' እርሱ ፈጣሪ እንጂ ከፍጥረታት አንዱ አይደለም።">You cannot be created through someone who is created. Paul explicitly clarifies: 'For by Him ALL things were created.' He is the Creator, not part of the creaturely inventory.</p>
+          <h4 data-en="Supreme Heir, Not First Creation" data-simple="Creator, Not a Created Being" data-am="የሁሉ ወራሽ እንጂ ፍጡር አይደለም">Supreme Heir, Not First Creation</h4>
+          <p data-en="You cannot be created through someone who is created. Paul explicitly clarifies: 'For by Him ALL things were created.' He is the Creator, not part of the creaturely inventory." 
+             data-simple="The Bible says: 'All things were created BY Him.' A creator cannot be one of the things He created. Jesus is the Creator of all." 
+             data-am="ጳውሎስ ወዲያውኑ ግልጽ ያደርገዋል፡ 'ሁሉ በእርሱ ተፈጥሯልና።' እርሱ ፈጣሪ እንጂ ከፍጥረታት አንዱ አይደለም።">You cannot be created through someone who is created. Paul explicitly clarifies: 'For by Him ALL things were created.' He is the Creator, not part of the creaturely inventory.</p>
         </div>
       </div>
     </div>
 
     <div class="glass-cards-stack reveal delay1">
       <div class="stack-card glass-card">
-        <span class="sc-tag" data-en="Sovereignty" data-am="ልዑላዊነት">Sovereignty</span>
-        <h4 data-en="Supreme Position" data-am="የበላይ ማዕረግ">Supreme Position</h4>
-        <p data-en="Holding the preeminent place of honour and headship above every created dominion." data-am="ከማናቸውም ፍጡራንና ኃይላት ሁሉ በላይ የክብርና የሥልጣን ባለቤት ነው።">Holding the preeminent place of honour and headship above every created dominion.</p>
+        <span class="sc-tag" data-en="Sovereignty" data-simple="Authority" data-am="ልዑላዊነት">Sovereignty</span>
+        <h4 data-en="Supreme Position" data-simple="Highest King" data-am="የበላይ ማዕረግ">Supreme Position</h4>
+        <p data-en="Holding the preeminent place of honour and headship above every created dominion." 
+           data-simple="Jesus holds the highest place of honour over everything in heaven and on earth." 
+           data-am="ከማናቸውም ፍጡራንና ኃይላት ሁሉ በላይ የክብርና የሥልጣን ባለቤት ነው።">Holding the preeminent place of honour and headship above every created dominion.</p>
       </div>
       <div class="stack-card glass-card">
-        <span class="sc-tag" data-en="Eternity" data-am="ዘላለማዊነት">Eternity</span>
-        <h4 data-en="Uncreated Source" data-am="ያልተፈጠረ ምንጭ">Uncreated Source</h4>
-        <p data-en="Existing prior to the inception of time, nature, and the cosmic order." data-am="ጊዜ፣ ተፈጥሮና ሕዋ ከመጀመራቸው በፊት የነበረ ዘላለማዊ ፈጣሪ።">Existing prior to the inception of time, nature, and the cosmic order.</p>
+        <span class="sc-tag" data-en="Eternity" data-simple="Forever" data-am="ዘላለማዊነት">Eternity</span>
+        <h4 data-en="Uncreated Source" data-simple="Without Beginning" data-am="ያልተፈጠረ ምንጭ">Uncreated Source</h4>
+        <p data-en="Existing prior to the inception of time, nature, and the cosmic order." 
+           data-simple="He existed before time, galaxies, and the universe began." 
+           data-am="ጊዜ፣ ተፈጥሮና ሕዋ ከመጀመራቸው በፊት የነበረ ዘላለማዊ ፈጣሪ።">Existing prior to the inception of time, nature, and the cosmic order.</p>
       </div>
     </div>
   </div>
@@ -291,11 +341,18 @@
   <div class="scene-content content-center">
     <div class="glass-badge reveal">
       <span class="badge-dot"></span>
-      <span data-en="Colossians 1:16–17 · The Cosmic Pillars" data-am="ቆላስይስ 1:16–17 · የፍጥረት አዕማድ">Colossians 1:16–17 · The Cosmic Pillars</span>
+      <span data-en="Colossians 1:16–17 · The Cosmic Pillars" data-simple="Colossians 1:16–17 · 4 Simple Truths" data-am="ቆላስይስ 1:16–17 · የፍጥረት አዕማድ">Colossians 1:16–17 · The Cosmic Pillars</span>
     </div>
 
-    <h2 class="scene-title-lg reveal" data-en="The Foundation of All Existence" data-am="የፍጥረት ሁሉ ባለሦስት አዕማድ መሠረት">The Foundation of All Existence</h2>
-    <p class="section-lead reveal" data-en="Because the Son is the visible image of God who existed before all things, creation is anchored entirely in Him through four divine dimensions:" data-am="ልጁ ከሁሉ በፊት የነበረ የእግዚአብሔር የሚታይ አምሳያ በመሆኑ፣ ፍጥረት ሁሉ በአራት መለኮታዊ አዕማድ በእርሱ ላይ ጸንቷል፡">
+    <h2 class="scene-title-lg reveal" 
+        data-en="The Foundation of All Existence" 
+        data-simple="Why the Universe Exists in Jesus" 
+        data-am="የፍጥረት ሁሉ ባለሦስት አዕማድ መሠረት">The Foundation of All Existence</h2>
+    
+    <p class="section-lead reveal" 
+       data-en="Because the Son is the visible image of God who existed before all things, creation is anchored entirely in Him through four divine dimensions:" 
+       data-simple="The Bible says the entire universe is connected to Jesus in four powerful ways:" 
+       data-am="ልጁ ከሁሉ በፊት የነበረ የእግዚአብሔር የሚታይ አምሳያ በመሆኑ፣ ፍጥረት ሁሉ በአራት መለኮታዊ አዕማድ በእርሱ ላይ ጸንቷል፡">
       Because the Son is the visible image of God who existed before all things, creation is anchored entirely in Him through four divine dimensions:
     </p>
 
@@ -306,9 +363,12 @@
           <span class="p-num">01</span>
           <span class="p-icon">✦</span>
         </div>
-        <span class="p-clause" data-en="BY HIM" data-am="በእርሱ">BY HIM</span>
-        <h3 class="p-name" data-en="The Source & Origin" data-am="ምንጩና መገኛ">The Source & Origin</h3>
-        <p class="p-desc" data-en="He is the original spring from which all stars, galaxies, organic life, and spiritual realms flow into existence." data-am="ከዋክብት፣ ጋላክሲዎች፣ ሕይወት ያላቸው ነገሮችና ረቂቅ ዓለማት ሁሉ ወደ መኖር የመጡበት የመጀመሪያው ምንጭ ነው።">He is the original spring from which all stars, galaxies, organic life, and spiritual realms flow into existence.</p>
+        <span class="p-clause" data-en="BY HIM" data-simple="MADE BY HIM" data-am="በእርሱ">BY HIM</span>
+        <h3 class="p-name" data-en="The Source & Origin" data-simple="The Creator" data-am="ምንጩና መገኛ">The Source & Origin</h3>
+        <p class="p-desc" 
+           data-en="He is the original spring from which all stars, galaxies, organic life, and spiritual realms flow into existence." 
+           data-simple="Every star, planet, tree, and person was made by Jesus." 
+           data-am="ከዋክብት፣ ጋላክሲዎች፣ ሕይወት ያላቸው ነገሮችና ረቂቅ ዓለማት ሁሉ ወደ መኖር የመጡበት የመጀመሪያው ምንጭ ነው።">He is the original spring from which all stars, galaxies, organic life, and spiritual realms flow into existence.</p>
       </div>
 
       <!-- Pillar 2 -->
@@ -317,9 +377,12 @@
           <span class="p-num">02</span>
           <span class="p-icon">⬡</span>
         </div>
-        <span class="p-clause" data-en="THROUGH HIM" data-am="በእርሱ በኩል">THROUGH HIM</span>
-        <h3 class="p-name" data-en="The Architect & Blueprint" data-am="ንድፉና አርክቴክቱ">The Architect & Blueprint</h3>
-        <p class="p-desc" data-en="He is the divine pattern through which the laws of physics, harmony, beauty, and consciousness were structured." data-am="የተፈጥሮ ሕጎች፣ ስምምነት፣ ውበትና ሕይወት ቅርጽና ሥርዓት ያገኙበት መለኮታዊ ንድፍ እርሱ ነው።">He is the divine pattern through which the laws of physics, harmony, beauty, and consciousness were structured.</p>
+        <span class="p-clause" data-en="THROUGH HIM" data-simple="MADE THROUGH HIM" data-am="በእርሱ በኩል">THROUGH HIM</span>
+        <h3 class="p-name" data-en="The Architect & Blueprint" data-simple="The Designer" data-am="ንድፉና አርክቴክቱ">The Architect & Blueprint</h3>
+        <p class="p-desc" 
+           data-en="He is the divine pattern through which the laws of physics, harmony, beauty, and consciousness were structured." 
+           data-simple="Jesus designed how nature works, how planets orbit, and how life grows." 
+           data-am="የተፈጥሮ ሕጎች፣ ስምምነት፣ ውበትና ሕይወት ቅርጽና ሥርዓት ያገኙበት መለኮታዊ ንድፍ እርሱ ነው።">He is the divine pattern through which the laws of physics, harmony, beauty, and consciousness were structured.</p>
       </div>
 
       <!-- Pillar 3 -->
@@ -328,9 +391,12 @@
           <span class="p-num">03</span>
           <span class="p-icon">☀</span>
         </div>
-        <span class="p-clause" data-en="FOR HIM" data-am="ለእርሱ">FOR HIM</span>
-        <h3 class="p-name" data-en="The Ultimate Purpose" data-am="ዋናው ዓላማ">The Ultimate Purpose</h3>
-        <p class="p-desc" data-en="Creation does not exist for itself; every galaxy, mountain, and human soul was fashioned to find its fulfillment in Him." data-am="ፍጥረት ለራሱ አልተፈጠረም፤ እያንዳንዱ ጋላክሲ፣ ተራራና የሰው ነፍስ ፍጻሜውንና ትርጉሙን የሚያገኘው በእርሱ ነው።">Creation does not exist for itself; every galaxy, mountain, and human soul was fashioned to find its fulfillment in Him.</p>
+        <span class="p-clause" data-en="FOR HIM" data-simple="MADE FOR HIM" data-am="ለእርሱ">FOR HIM</span>
+        <h3 class="p-name" data-en="The Ultimate Purpose" data-simple="The Purpose" data-am="ዋናው ዓላማ">The Ultimate Purpose</h3>
+        <p class="p-desc" 
+           data-en="Creation does not exist for itself; every galaxy, mountain, and human soul was fashioned to find its fulfillment in Him." 
+           data-simple="You and I were created to know Jesus and experience His love." 
+           data-am="ፍጥረት ለራሱ አልተፈጠረም፤ እያንዳንዱ ጋላክሲ፣ ተራራና የሰው ነፍስ ፍጻሜውንና ትርጉሙን የሚያገኘው በእርሱ ነው።">Creation does not exist for itself; every galaxy, mountain, and human soul was fashioned to find its fulfillment in Him.</p>
       </div>
 
       <!-- Pillar 4 -->
@@ -339,9 +405,12 @@
           <span class="p-num">04</span>
           <span class="p-icon">∞</span>
         </div>
-        <span class="p-clause" data-en="IN HIM" data-am="በእርሱ">IN HIM</span>
-        <h3 class="p-name" data-en="The Divine Sustainer" data-am="ሁሉን ደጋፊ">The Divine Sustainer</h3>
-        <p class="p-desc" data-en="'In Him all things hold together.' Without His continuous upholding power, the fabric of the universe would dissolve." data-am="'ሁሉ በእርሱ ተያይዞ ቆሟል።' ያለ እርሱ የማያቋርጥ ደጋፊ ኃይል መላው አጽናፈ ዓለም ሊጸና አይችልም።">"In Him all things hold together." Without His continuous upholding power, the fabric of the universe would dissolve.</p>
+        <span class="p-clause" data-en="IN HIM" data-simple="HELD TOGETHER IN HIM" data-am="በእርሱ">IN HIM</span>
+        <h3 class="p-name" data-en="The Divine Sustainer" data-simple="The Sustainer" data-am="ሁሉን ደጋፊ">The Divine Sustainer</h3>
+        <p class="p-desc" 
+           data-en="'In Him all things hold together.' Without His continuous upholding power, the fabric of the universe would dissolve." 
+           data-simple="'In Him everything holds together.' Jesus keeps every atom in the universe alive and functioning right now." 
+           data-am="'ሁሉ በእርሱ ተያይዞ ቆሟል።' ያለ እርሱ የማያቋርጥ ደጋፊ ኃይል መላው አጽናፈ ዓለም ሊጸና አይችልም።">"In Him all things hold together." Without His continuous upholding power, the fabric of the universe would dissolve.</p>
       </div>
     </div>
   </div>
@@ -357,12 +426,18 @@
   <div class="scene-content content-center">
     <div class="conclusion-box glass-card reveal">
       <div class="card-header center">
-        <span class="tag-glass" data-en="Conclusion · Divine Affirmation" data-am="ማጠቃለያ · መለኮታዊ እውነት">Conclusion · Divine Affirmation</span>
+        <span class="tag-glass" data-en="Conclusion · Divine Affirmation" data-simple="Conclusion · Jesus is God" data-am="ማጠቃለያ · መለኮታዊ እውነት">Conclusion · Divine Affirmation</span>
       </div>
 
-      <h2 class="conclusion-headline" data-en="These Titles Do Not Demote Jesus From Being God" data-am="እነዚህ ማዕረጎች ኢየሱስ እግዚአብሔር መሆኑን አያሳንሱም">These Titles Do Not Demote Jesus From Being God</h2>
+      <h2 class="conclusion-headline" 
+          data-en="These Titles Do Not Demote Jesus From Being God" 
+          data-simple="These Titles Prove That Jesus Is 100% God" 
+          data-am="እነዚህ ማዕረጎች ኢየሱስ እግዚአብሔር መሆኑን አያሳንሱም">These Titles Do Not Demote Jesus From Being God</h2>
       
-      <p class="conclusion-summary" data-en="Rather than diminishing His divinity, these titles describe the breathtaking reality of how the transcendent, unapproachable, and invisible God chose to reveal Himself, bring the entire universe into existence, and walk in love among humanity." data-am="እነዚህ ማዕረጎች መለኮትነቱን ከማሳነስ ይልቅ፣ የማይቀረበውና የማይታየው እግዚአብሔር ራሱን የገለጠበትን፣ መላውን አጽናፈ ዓለም የፈጠረበትን፣ እና በሰው መካከል በፍቅር የተመላለሰበትን አስደናቂ እውነት ያውጃሉ።">
+      <p class="conclusion-summary" 
+         data-en="Rather than diminishing His divinity, these titles describe the breathtaking reality of how the transcendent, unapproachable, and invisible God chose to reveal Himself, bring the entire universe into existence, and walk in love among humanity." 
+         data-simple="Calling Jesus the 'Image of God' and 'Firstborn' does not make Him less than God. It explains how the invisible God made Himself known, created the world, and came to live among us in love." 
+         data-am="እነዚህ ማዕረጎች መለኮትነቱን ከማሳነስ ይልቅ፣ የማይቀረበውና የማይታየው እግዚአብሔር ራሱን የገለጠበትን፣ መላውን አጽናፈ ዓለም የፈጠረበትን፣ እና በሰው መካከል በፍቅር የተመላለሰበትን አስደናቂ እውነት ያውጃሉ።">
         Rather than diminishing His divinity, these titles describe the breathtaking reality of how the transcendent, unapproachable, and invisible God chose to reveal Himself, bring the entire universe into existence, and walk in love among humanity.
       </p>
 
@@ -370,23 +445,27 @@
         <div class="summary-card glass-panel">
           <div class="sc-head">
             <span class="sc-icon">✦</span>
-            <h4 data-en="Visible Manifestation" data-am="የሚታይ መገለጥ">Visible Manifestation</h4>
+            <h4 data-en="Visible Manifestation" data-simple="God Made Visible" data-am="የሚታይ መገለጥ">Visible Manifestation</h4>
           </div>
-          <p data-en="The Son is the full, personal, and tangible embodiment of the Father's eternal essence." data-am="ልጁ የአብ ዘላለማዊ ባሕርይ ሙሉ፣ ግላዊና የሚዳሰስ መገለጫ ነው።">The Son is the full, personal, and tangible embodiment of the Father's eternal essence.</p>
+          <p data-en="The Son is the full, personal, and tangible embodiment of the Father's eternal essence." 
+             data-simple="Jesus is God stepping into the world so we can know Him personally." 
+             data-am="ልጁ የአብ ዘላለማዊ ባሕርይ ሙሉ፣ ግላዊና የሚዳሰስ መገለጫ ነው።">The Son is the full, personal, and tangible embodiment of the Father's eternal essence.</p>
         </div>
 
         <div class="summary-card glass-panel">
           <div class="sc-head">
             <span class="sc-icon">❤</span>
-            <h4 data-en="The Word Made Flesh" data-am="ሥጋ የሆነው ቃሉ">The Word Made Flesh</h4>
+            <h4 data-en="The Word Made Flesh" data-simple="Love in Action" data-am="ሥጋ የሆነው ቃሉ">The Word Made Flesh</h4>
           </div>
-          <p data-en="The same Word who held the cosmos in place stepped into human frailty, full of grace and truth (John 1:14)." data-am="አጽናፈ ዓለሙን የያዘው ያው ዘላለማዊ ቃል በጸጋና በእውነት ተሞልቶ በሰው መካከል አደረ (ዮሐ 1:14)።">The same Word who held the cosmos in place stepped into human frailty, full of grace and truth (John 1:14).</p>
+          <p data-en="The same Word who held the cosmos in place stepped into human frailty, full of grace and truth (John 1:14)." 
+             data-simple="The Creator of the galaxies loved us so much that He came in flesh to bring us grace and truth (John 1:14)." 
+             data-am="አጽናፈ ዓለሙን የያዘው ያው ዘላለማዊ ቃል በጸጋና በእውነት ተሞልቶ በሰው መካከል አደረ (ዮሐ 1:14)።">The same Word who held the cosmos in place stepped into human frailty, full of grace and truth (John 1:14).</p>
         </div>
       </div>
 
       <div class="conclusion-action">
         <a class="glass-btn primary" href="#cosmos">
-          <span class="btn-text" data-en="Back to Top" data-am="ወደ መጀመሪያ ተመለስ">Back to Top</span>
+          <span class="btn-text" data-en="Back to Top" data-simple="Back to Top" data-am="ወደ መጀመሪያ ተመለስ">Back to Top</span>
           <svg class="btn-icon up" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -399,13 +478,16 @@
   <div class="footer-inner glass-card">
     <div class="footer-brand">
       <div class="logo-orb sm"></div>
-      <span class="brand-title" data-en="The Word Was God" data-am="ቃሉ እግዚአብሔር ነበረ">The Word Was God</span>
+      <span class="brand-title" data-en="The Word Was God" data-simple="The Word Was God" data-am="ቃሉ እግዚአብሔር ነበረ">The Word Was God</span>
     </div>
-    <p class="footer-desc" data-en="An interactive visual and theological sanctuary exploring how the invisible God made Himself visible through the Son before all creation." data-am="የማይታየው እግዚአብሔር ፍጥረት ሁሉ ከመፈጠሩ በፊት ራሱን በልጁ ግልጽ ያደረገበትን እውነት የሚያስረዳ በይነተገናኝ መንፈሳዊ ጉዞ።">
+    <p class="footer-desc" 
+       data-en="An interactive visual and theological sanctuary exploring how the invisible God made Himself visible through the Son before all creation." 
+       data-simple="A simple and beautiful guide to understanding how Jesus is God's visible image to the world before creation." 
+       data-am="የማይታየው እግዚአብሔር ፍጥረት ሁሉ ከመፈጠሩ በፊት ራሱን በልጁ ግልጽ ያደረገበትን እውነት የሚያስረዳ በይነተገናኝ መንፈሳዊ ጉዞ።">
       An interactive visual and theological sanctuary exploring how the invisible God made Himself visible through the Son before all creation.
     </p>
     <div class="footer-verses">
-      <span data-en="Proverbs 8:22–31 · John 1:1–18 · Colossians 1:15–20 · Hebrews 1:1–4" data-am="ምሳሌ 8:22–31 · ዮሐንስ 1:1–18 · ቆላስይስ 1:15–20 · ዕብራውያን 1:1–4">Proverbs 8:22–31 · John 1:1–18 · Colossians 1:15–20 · Hebrews 1:1–4</span>
+      <span data-en="Proverbs 8:22–31 · John 1:1–18 · Colossians 1:15–20 · Hebrews 1:1–4" data-simple="Proverbs 8:22–31 · John 1:1–18 · Colossians 1:15–20 · Hebrews 1:1–4" data-am="ምሳሌ 8:22–31 · ዮሐንስ 1:1–18 · ቆላስይስ 1:15–20 · ዕብራውያን 1:1–4">Proverbs 8:22–31 · John 1:1–18 · Colossians 1:15–20 · Hebrews 1:1–4</span>
     </div>
   </div>
 </footer>

@@ -1,16 +1,18 @@
 'use strict';
 
 /* ════════════════════════════════════════════
-   BILINGUAL TRANSLATION HANDLER
+   3-WAY TRANSLATION & READING MODE HANDLER
 ════════════════════════════════════════════ */
 const pageTitles = {
   en: "The Word — The Visible Image of the Invisible God",
+  simple: "Jesus is God's Visible Image — Made Simple",
   am: "ቃሉ — የማይታየው እግዚአብሔር የሚታይ አምሳያ"
 };
 
 let currentLang = localStorage.getItem('lang') || 'en';
 
 function setLang(lang) {
+  if (!['en', 'simple', 'am'].includes(lang)) lang = 'en';
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.setAttribute('data-lang', lang);
@@ -20,12 +22,12 @@ function setLang(lang) {
     document.title = pageTitles[lang];
   }
 
-  document.querySelectorAll('[data-en],[data-am]').forEach(el => {
+  document.querySelectorAll('[data-en],[data-simple],[data-am]').forEach(el => {
     const t = el.getAttribute(`data-${lang}`);
     if (t !== null && el.children.length === 0) el.textContent = t;
   });
 
-  ['en', 'am'].forEach(l => {
+  ['en', 'simple', 'am'].forEach(l => {
     const btn = document.getElementById(`lb-${l}`);
     if (btn) {
       btn.classList.toggle('active', l === lang);
