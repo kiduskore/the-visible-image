@@ -36,7 +36,32 @@ function setLang(lang) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+/* ════════════════════════════════════════════
+   LIGHT / DARK THEME HANDLER
+════════════════════════════════════════════ */
+let currentTheme = localStorage.getItem('theme') || 'dark';
+
+function setTheme(theme) {
+  if (!['dark', 'light'].includes(theme)) theme = 'dark';
+  currentTheme = theme;
+  localStorage.setItem('theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
+  
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+    toggleBtn.setAttribute('title', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+  }
+}
+
+function toggleTheme() {
+  setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setLang(currentLang);
+  setTheme(currentTheme);
+});
 
 /* ════════════════════════════════════════════
    CUSTOM GLASS CURSOR & LIGHT TRAIL
@@ -117,7 +142,7 @@ if (!isTouchDevice && cursorCanvas && cCtx) {
   animateCursor();
 
   // Delegation for smooth dynamic hover state
-  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .pillar-card, .eternity-card, .insight-item, .summary-card, .verse-explorer-card, .vf-btn, .vec-col, .ks-card, .prophecy-card';
+  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .theme-toggle-btn, .pillar-card, .eternity-card, .insight-item, .summary-card, .verse-explorer-card, .vf-btn, .vec-col, .ks-card, .prophecy-card';
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest && e.target.closest(hoverSelectors)) {
       cursorRing?.classList.add('hover');

@@ -2,24 +2,34 @@
    ULTRA-MODERN DESIGN SYSTEM & TOKENS
 ════════════════════════════════════════════ */
 :root {
+  /* Core Gold Brand Palette */
   --gold:             #e8be65;
   --gold-bright:      #ffdf88;
   --gold-glow:        rgba(232, 190, 101, 0.4);
   --gold-soft:        rgba(232, 190, 101, 0.12);
   --gold-border:      rgba(232, 190, 101, 0.35);
   
+  /* Dark Theme Surfaces (Default) */
   --bg-dark:          #07070e;
-  --bg-card:          rgba(13, 13, 22, 0.65);
-  --bg-card-hover:    rgba(18, 18, 30, 0.8);
+  --bg-card:          rgba(13, 13, 22, 0.72);
+  --bg-card-hover:    rgba(19, 19, 32, 0.85);
+  --bg-panel:         rgba(255, 255, 255, 0.03);
+  --bg-panel-quote:   rgba(0, 0, 0, 0.32);
+  --overlay-veil:     rgba(0, 0, 0, 0.65);
   
+  /* Borders & Shadows */
   --glass-border:     rgba(255, 255, 255, 0.1);
   --glass-border-sub: rgba(255, 255, 255, 0.05);
-  --glass-shadow:     0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  --glass-shadow:     0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  --header-bg:        rgba(10, 10, 18, 0.68);
   
+  /* High-Contrast Typography */
   --text-white:       #ffffff;
-  --text-dim:         rgba(255, 255, 255, 0.78);
-  --text-muted:       rgba(255, 255, 255, 0.5);
+  --text-dim:         rgba(255, 255, 255, 0.8);
+  --text-muted:       rgba(255, 255, 255, 0.55);
+  --text-quote:       #f3f4f6;
   
+  /* Typography Scale */
   --font-display:     'Outfit', -apple-system, sans-serif;
   --font-body:        'Plus Jakarta Sans', -apple-system, sans-serif;
   --font-amharic:     'Noto Sans Ethiopic', 'Outfit', sans-serif;
@@ -32,6 +42,37 @@
   --max-w:            1140px;
 }
 
+/* ════════════════════════════════════════════
+   LIGHT MODE DESIGN SYSTEM (CLEAN IVORY & GOLD)
+════════════════════════════════════════════ */
+[data-theme="light"] {
+  --gold:             #b8860b;
+  --gold-bright:      #996515;
+  --gold-glow:        rgba(184, 134, 11, 0.22);
+  --gold-soft:        rgba(184, 134, 11, 0.1);
+  --gold-border:      rgba(184, 134, 11, 0.38);
+  
+  /* Clean White / Ivory Surfaces */
+  --bg-dark:          #fbf9f5;
+  --bg-card:          rgba(255, 255, 255, 0.88);
+  --bg-card-hover:    rgba(255, 255, 255, 0.98);
+  --bg-panel:         rgba(244, 240, 232, 0.7);
+  --bg-panel-quote:   rgba(250, 247, 240, 0.92);
+  --overlay-veil:     rgba(251, 249, 245, 0.72);
+  
+  /* Soft Architectural Borders & Shadows */
+  --glass-border:     rgba(0, 0, 0, 0.09);
+  --glass-border-sub: rgba(0, 0, 0, 0.05);
+  --glass-shadow:     0 20px 48px rgba(35, 28, 20, 0.08), 0 2px 10px rgba(35, 28, 20, 0.04), inset 0 1px 1px rgba(255, 255, 255, 1);
+  --header-bg:        rgba(255, 255, 255, 0.85);
+  
+  /* Deep Readable Dark Text */
+  --text-white:       #18181b;
+  --text-dim:         #374151;
+  --text-muted:       #6b7280;
+  --text-quote:       #1f2937;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -42,6 +83,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   background: var(--bg-dark);
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
 body {
@@ -51,6 +93,20 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+/* Smooth theme transitions on glass cards */
+.glass-card,
+.glass-pill,
+.glass-btn,
+.glass-panel,
+.verse-explorer-card,
+.prophetic-unit,
+.theology-banner,
+.prophecy-card,
+.header-floating-bar {
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
 }
 
 /* Custom cursor enabled on desktop pointer */
@@ -342,6 +398,64 @@ body {
   width: 1px;
   height: 12px;
   background: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="light"] .lb-sep {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  cursor: none;
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="light"] .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(232, 190, 101, 0.2);
+  border-color: var(--gold-bright);
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: 0 0 14px var(--gold-glow);
+}
+
+.theme-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.3s ease;
+  position: absolute;
+}
+
+/* Dark Mode (Default): Show Sun icon to switch to Light */
+.sun-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+.moon-icon {
+  opacity: 0;
+  transform: scale(0.4) rotate(-90deg);
+}
+
+/* Light Mode: Show Moon icon to switch to Dark */
+[data-theme="light"] .sun-icon {
+  opacity: 0;
+  transform: scale(0.4) rotate(90deg);
+}
+[data-theme="light"] .moon-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
 }
 
 .ham-btn {
@@ -1491,3 +1605,200 @@ body {
 .delay1 { transition-delay: 0.15s; }
 .delay2 { transition-delay: 0.3s; }
 .delay3 { transition-delay: 0.45s; }
+
+/* ════════════════════════════════════════════
+   LIGHT MODE COMPONENT POLISH & CONTRAST
+════════════════════════════════════════════ */
+[data-theme="light"] .scene-overlay.cosmos-overlay {
+  background: linear-gradient(180deg,
+    rgba(251, 249, 245, 0.72) 0%,
+    rgba(251, 249, 245, 0.45) 40%,
+    rgba(251, 249, 245, 0.85) 85%,
+    rgba(251, 249, 245, 1) 100%
+  );
+}
+
+[data-theme="light"] .scene-overlay.forest-overlay {
+  background: linear-gradient(180deg,
+    rgba(251, 249, 245, 0.78) 0%,
+    rgba(251, 249, 245, 0.48) 50%,
+    rgba(251, 249, 245, 0.88) 100%
+  );
+}
+
+[data-theme="light"] .scene-overlay.water-overlay {
+  background: linear-gradient(180deg,
+    rgba(251, 249, 245, 0.75) 0%,
+    rgba(251, 249, 245, 0.4) 50%,
+    rgba(251, 249, 245, 0.85) 100%
+  );
+}
+
+[data-theme="light"] .scene-overlay.spirit-overlay {
+  background: linear-gradient(180deg,
+    rgba(251, 249, 245, 0.76) 0%,
+    rgba(251, 249, 245, 0.42) 50%,
+    rgba(251, 249, 245, 0.88) 100%
+  );
+}
+
+[data-theme="light"] .scene-overlay.peace-overlay {
+  background: linear-gradient(180deg,
+    rgba(251, 249, 245, 0.75) 0%,
+    rgba(251, 249, 245, 0.5) 50%,
+    rgba(251, 249, 245, 0.95) 100%
+  );
+}
+
+[data-theme="light"] .header-floating-bar {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .logo-text {
+  color: #18181b;
+}
+
+[data-theme="light"] .glass-link {
+  color: #4b5563;
+}
+[data-theme="light"] .glass-link:hover {
+  color: #111827;
+  background: rgba(0, 0, 0, 0.04);
+}
+[data-theme="light"] .glass-link.active {
+  color: #92630d;
+  background: rgba(184, 134, 11, 0.12);
+  border-color: rgba(184, 134, 11, 0.3);
+}
+
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 48px rgba(35, 28, 20, 0.06), 0 2px 10px rgba(35, 28, 20, 0.03), inset 0 1px 1px #ffffff;
+}
+
+[data-theme="light"] .glass-card:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(184, 134, 11, 0.4);
+  box-shadow: 0 28px 60px rgba(35, 28, 20, 0.1), 0 0 24px rgba(184, 134, 11, 0.12), inset 0 1px 1px #ffffff;
+}
+
+[data-theme="light"] .theology-banner {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(184, 134, 11, 0.4);
+  box-shadow: 0 24px 60px rgba(35, 28, 20, 0.08), 0 0 30px rgba(184, 134, 11, 0.08);
+}
+
+[data-theme="light"] .theology-banner .tb-title,
+[data-theme="light"] .card-title,
+[data-theme="light"] .hero-title,
+[data-theme="light"] .scene-title-lg,
+[data-theme="light"] .conclusion-headline,
+[data-theme="light"] .brand-title {
+  color: #18181b;
+}
+
+[data-theme="light"] .gold-shimmer {
+  background: linear-gradient(135deg, #b8860b 0%, #d4a337 50%, #996515 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme="light"] .ks-card {
+  background: rgba(245, 242, 235, 0.85);
+  border-color: rgba(184, 134, 11, 0.25);
+}
+[data-theme="light"] .ks-text {
+  color: #27272a;
+}
+
+[data-theme="light"] .vec-scripture-quote {
+  background: rgba(248, 246, 240, 0.95);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+[data-theme="light"] .vec-scripture-quote p {
+  color: #18181b;
+}
+
+[data-theme="light"] .jesus-focus {
+  background: rgba(184, 134, 11, 0.08);
+  border-color: rgba(184, 134, 11, 0.25);
+}
+[data-theme="light"] .jesus-focus p {
+  color: #27272a;
+}
+
+[data-theme="light"] .nt-passages {
+  background: rgba(124, 58, 237, 0.06);
+  border-color: rgba(124, 58, 237, 0.18);
+}
+[data-theme="light"] .nt-cit {
+  color: #6d28d9;
+}
+
+[data-theme="light"] .vec-theology-note {
+  background: rgba(245, 242, 235, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #374151;
+}
+
+[data-theme="light"] .glass-btn.primary {
+  background: linear-gradient(135deg, #b8860b 0%, #996515 100%);
+  color: #ffffff;
+  box-shadow: 0 14px 35px rgba(184, 134, 11, 0.28);
+}
+
+[data-theme="light"] .glass-btn.secondary {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #27272a;
+}
+[data-theme="light"] .glass-btn.secondary:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .sh-pill {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #4b5563;
+}
+
+[data-theme="light"] .ot-box {
+  background: rgba(124, 58, 237, 0.06);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+[data-theme="light"] .ot-box .prop-text {
+  color: #4c1d95;
+}
+
+[data-theme="light"] .nt-box {
+  background: rgba(184, 134, 11, 0.08);
+  border-color: rgba(184, 134, 11, 0.25);
+}
+[data-theme="light"] .nt-box .prop-text {
+  color: #1f2937;
+}
+
+[data-theme="light"] .mob-dropdown {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .mob-link {
+  color: #374151;
+}
+[data-theme="light"] .mob-link:hover {
+  color: #000000;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .ambient-glow {
+  opacity: 0.12;
+}
+
+[data-theme="light"] #star-canvas {
+  opacity: 0.25;
+}
