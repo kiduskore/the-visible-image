@@ -1,229 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>The Word Was God — The Visible Image of the Invisible God</title>
-  <meta name="description" content="God is spirit — invisible, unapproachable. But before the world began, He chose to make Himself visible through the eternal Son. This is that story."/>
+  <title data-en="The Word Was God — A Heavenly Vision" data-am="ቃሉ እግዚአብሔር ነበረ — የሰማያዊ ራዕይ">The Word Was God — A Heavenly Vision</title>
+  <meta name="description" content="A bilingual journey into the eternal truth that God made Himself visible through the Son, before all creation."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif+Ethiopic:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<!-- ═══════ NAV ═══════ -->
-<nav class="site-nav" id="site-nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#top">THE WORD WAS GOD</a>
-    <div class="nav-links">
-      <a href="#spirit">The Invisible</a>
-      <a href="#radiance">The Radiance</a>
-      <a href="#creation">Before Creation</a>
-      <a href="#firstborn">The Firstborn</a>
-    </div>
-  </div>
-</nav>
+<!-- ══════════ CANVAS LAYERS ══════════ -->
+<canvas id="particle-canvas"></canvas>
 
-<!-- ═══════ HERO ═══════ -->
-<section class="hero" id="top">
-  <div class="hero-image-wrap">
-    <img src="hero.jpg" alt="Divine light beams piercing through darkness" class="hero-img" id="hero-img"/>
-    <div class="hero-img-overlay"></div>
+<!-- ══════════ ANIMATED CLOUDS ══════════ -->
+<div class="cloud-layer" aria-hidden="true">
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
+  <div class="cloud c5"></div>
+  <div class="cloud c6"></div>
+</div>
+
+<!-- ══════════ LIGHT RAYS ══════════ -->
+<div class="light-rays" aria-hidden="true">
+  <div class="ray ray1"></div>
+  <div class="ray ray2"></div>
+  <div class="ray ray3"></div>
+  <div class="ray ray4"></div>
+  <div class="ray ray5"></div>
+</div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+
+    <a class="site-logo" href="#hero">
+      <span class="logo-cross">✦</span>
+      <span class="logo-text" data-en="The Logos" data-am="ቃሉ">The Logos</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#spirit" data-en="The Invisible" data-am="የማይታየው">The Invisible</a>
+      <a href="#radiance" data-en="The Radiance" data-am="ብርሃኑ">The Radiance</a>
+      <a href="#creation" data-en="Before Creation" data-am="ፍጥረት በፊት">Before Creation</a>
+      <a href="#firstborn" data-en="The Firstborn" data-am="ፊተኛው">The Firstborn</a>
+    </nav>
+
+    <!-- Language Selector -->
+    <div class="lang-selector" role="group" aria-label="Language / ቋንቋ">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" id="btn-am" onclick="setLang('am')" aria-pressed="false">አማ</button>
+    </div>
+
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <div class="hero-content">
-    <p class="hero-kicker">John 1:1 &nbsp;·&nbsp; Colossians 1:15 &nbsp;·&nbsp; Hebrews 1:3</p>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#spirit" data-en="The Invisible" data-am="የማይታየው">The Invisible</a>
+    <a href="#radiance" data-en="The Radiance" data-am="ብርሃኑ">The Radiance</a>
+    <a href="#creation" data-en="Before Creation" data-am="ፍጥረት በፊት">Before Creation</a>
+    <a href="#firstborn" data-en="The Firstborn" data-am="ፊተኛው">The Firstborn</a>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="heaven.jpg" alt="" class="hero-bg-img" id="hero-bg-img"/>
+    <div class="hero-bg-overlay"></div>
+  </div>
+
+  <div class="hero-content glass-panel">
+    <p class="hero-eyebrow">
+      <span data-en="John 1:1 · Colossians 1:15 · Hebrews 1:3" data-am="ዮሐንስ 1:1 · ቆላስይስ 1:15 · ዕብራውያን 1:3">John 1:1 · Colossians 1:15 · Hebrews 1:3</span>
+    </p>
     <h1 class="hero-title">
-      <span class="hero-title-line" id="h1l1">God made</span>
-      <span class="hero-title-line hero-title-em" id="h1l2">Himself visible</span>
-      <span class="hero-title-line" id="h1l3">to the world.</span>
+      <span class="hero-line" data-en="The Word" data-am="ቃሉ">The Word</span>
+      <span class="hero-line italic" data-en="Was God" data-am="እግዚአብሔር ነበረ">Was God</span>
     </h1>
-  </div>
-  <div class="hero-scroll-cue">
-    <span>SCROLL</span>
-    <div class="scroll-bar"></div>
-  </div>
-</section>
-
-<!-- ═══════ OPENER STATEMENT ═══════ -->
-<section class="opener">
-  <div class="container">
-    <p class="large-body reveal">
-      <strong>Despite being invisible, untouchable, and beyond all human comprehension,</strong> God refused to remain hidden. Before the universe was formed — before light, before matter, before time itself — He arranged a way to make Himself fully known.
+    <p class="hero-subtitle" data-en="Before the universe began, God made Himself visible through the eternal Son — a light so perfect, it carries the fullness of His glory." data-am="ዓለም ሳይፈጠር፣ እግዚአብሔር ራሱን በዘላለማዊው ልጅ ግልጽ አደረገ — ክብሩን ሙሉ በሙሉ የሚሸከም ብርሃን።">
+      Before the universe began, God made Himself visible through the eternal Son — a light so perfect, it carries the fullness of His glory.
     </p>
+    <a class="hero-cta" href="#spirit">
+      <span data-en="Begin the Journey" data-am="ጉዞውን ጀምር">Begin the Journey</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-cue-line"></div>
+    <span data-en="SCROLL" data-am="ወደ ታች">SCROLL</span>
   </div>
 </section>
 
-<!-- ═══════ SECTION 1: GOD IS SPIRIT ═══════ -->
-<section class="editorial-section" id="spirit">
+<!-- ══════════ SECTION 1: GOD IS SPIRIT ══════════ -->
+<section class="content-section" id="spirit">
+  <div class="section-bg-gradient spirit-grad"></div>
   <div class="container">
-    <div class="section-label reveal">John 4:24</div>
-    <h2 class="section-title reveal">GOD IS<br/>SPIRIT</h2>
-    <div class="two-col">
-      <div class="col-body reveal">
-        <p>God, by His very nature, is <em>spirit</em> — invisible, untouchable, transcendent, beyond every physical boundary. No human eye has ever seen Him. No hand has reached Him. He dwells in light unapproachable; light so pure and intense that no creature can look upon Him and live.</p>
-        <p>This was always the mystery at the heart of existence: the Creator of all things, the source of all life, the foundation of all reality — utterly beyond the capacity of His own creation to perceive, to know, or to approach.</p>
+    <div class="section-tag">
+      <span data-en="John 4:24" data-am="ዮሐንስ 4:24">John 4:24</span>
+    </div>
+    <h2 class="section-title" data-en="God Is Spirit" data-am="እግዚአብሔር መንፈስ ነው">God Is Spirit</h2>
+    <div class="content-grid">
+      <div class="glass-panel content-card reveal">
+        <p data-en="God, by His very nature, is spirit — invisible, untouchable, transcendent, beyond every physical boundary. No human eye has ever seen Him. No hand has reached Him. He dwells in light unapproachable; a purity so absolute that no created being can stand in His presence." data-am="እግዚአብሔር በባሕርዩ መንፈስ ነው — የማይታይ፣ የማይዳሰስ፣ ከሁሉ የላቀ፣ ከማናቸውም ሥጋዊ ወሰን ያለፈ። ምንም ሰው ዐይኑ አይቶት አያውቅም። ምንም እጅ ደርሶት አያውቅም። በማይቀረብ ብርሃን ይኖራል — ምንም ፍጡር ፊቱ ቆሞ ሊቋቋም የማይችለው ቅዱስነት።">
+          God, by His very nature, is spirit — invisible, untouchable, transcendent, beyond every physical boundary. No human eye has ever seen Him. No hand has reached Him. He dwells in light unapproachable; a purity so absolute that no created being can stand in His presence.
+        </p>
       </div>
-      <div class="col-aside reveal">
-        <blockquote class="aside-quote">
-          "No one has ever seen God."
-          <cite>— John 1:18</cite>
+      <div class="quote-card glass-panel reveal delay1">
+        <blockquote>
+          <p data-en='"No one has ever seen God."' data-am='"እግዚአብሔርን ማንም አይቶት አያውቅም።"'>"No one has ever seen God."</p>
+          <cite data-en="— John 1:18" data-am="— ዮሐንስ 1:18">— John 1:18</cite>
         </blockquote>
-        <blockquote class="aside-quote">
-          "God is light; in him there is no darkness at all."
-          <cite>— 1 John 1:5</cite>
+        <blockquote>
+          <p data-en='"God is light; in him there is no darkness at all."' data-am='"እግዚአብሔር ብርሃን ነው፤ ጨለማ ፈጽሞ በእርሱ ዘንድ የለም።"'>"God is light; in him there is no darkness at all."</p>
+          <cite data-en="— 1 John 1:5" data-am="— 1 ዮሐንስ 1:5">— 1 John 1:5</cite>
         </blockquote>
+      </div>
+    </div>
+  </div>
+  <div class="waterfall-strip" aria-hidden="true">
+    <div class="wf w1"></div><div class="wf w2"></div><div class="wf w3"></div>
+    <div class="wf w4"></div><div class="wf w5"></div>
+  </div>
+</section>
+
+<!-- ══════════ SECTION 2: THE RADIANCE ══════════ -->
+<section class="content-section" id="radiance">
+  <div class="section-bg-gradient radiance-grad"></div>
+  <div class="container">
+    <div class="section-tag">
+      <span data-en="Hebrews 1:3" data-am="ዕብራውያን 1:3">Hebrews 1:3</span>
+    </div>
+    <h2 class="section-title" data-en="The Radiance of His Glory" data-am="የክብሩ ብርሃን">The Radiance of His Glory</h2>
+    <div class="full-quote-block glass-panel reveal">
+      <p class="pull-text" data-en='"The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word."' data-am='"ልጁ የእግዚአብሔር ክብር ብርሃን፣ የባሕርዩም ሐቀኛ ምሳሌ ነው፤ ሁሉን በኃይለ ቃሉ ይደግፋል።"'>
+        "The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word."
+      </p>
+      <cite data-en="— Hebrews 1:3" data-am="— ዕብራውያን 1:3">— Hebrews 1:3</cite>
+    </div>
+    <div class="content-grid reverse">
+      <div class="glass-panel content-card reveal delay1">
+        <p data-en="Consider light and the sun. The sun itself is unapproachable — but its radiance, its light, is the very expression of what the sun is. The light carries the full reality of the sun to the world. Without the light, the sun is unknowable." data-am="ፀሐይንና ብርሃኗን አስቡ። ፀሐዩ ራሱ ሊቀረብ አይቻልም — ነገር ግን ብርሃኗ ፀሐዩ ምን እንደሆነ ሙሉ ልኩን ይገልጻል። ብርሃን ሳይኖር ፀሐዩ አይታወቅም።">
+          Consider light and the sun. The sun itself is unapproachable — but its radiance, its light, is the very expression of what the sun is. The light carries the full reality of the sun to the world. Without the light, the sun is unknowable.
+        </p>
+        <p data-en="So the Son is to the Father. He is not a diminished version of God — He is the living radiance, the full and exact expression of God's own being, sent into the world so that God could finally be seen." data-am="እንዲሁ ልጁ ለአባቱ ነው። የእግዚአብሔር ደካማ ቅጂ አይደለም — ሕያው ብርሃን ነው፤ ዓለም እግዚአብሔርን ሊያይ እንዲችል የተላከ።">
+          So the Son is to the Father. He is not a diminished version of God — He is the living radiance, the full and exact expression of God's own being, sent into the world so that God could finally be seen.
+        </p>
+      </div>
+      <div class="orb-visual reveal">
+        <div class="orb-glow-ring"></div>
+        <div class="orb-core"></div>
+        <p class="orb-caption" data-en="The Radiance of God" data-am="የእግዚአብሔር ብርሃን">The Radiance of God</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FULL-WIDTH IMAGE BREAK 1 ═══════ -->
-<div class="fullwidth-image reveal">
-  <img src="explosion.jpg" alt="An explosion of divine light" />
-  <div class="fullwidth-image-caption">The radiance of an unapproachable glory — "dwelling in light inaccessible" — 1 Timothy 6:16</div>
+<!-- ══════════ FULL HEAVEN IMAGE BREAK ══════════ -->
+<div class="image-break">
+  <img src="heaven.jpg" alt="A serene vision of heaven — clouds, golden light, celestial gardens"/>
+  <div class="image-break-overlay">
+    <p class="image-break-quote glass-panel" data-en='"Whoever has seen me has seen the Father." — John 14:9' data-am='"እኔን ያየ አባቴን አይቷል።" — ዮሐንስ 14:9'>"Whoever has seen me has seen the Father." — John 14:9</p>
+  </div>
 </div>
 
-<!-- ═══════ SECTION 2: THE RADIANCE ═══════ -->
-<section class="editorial-section" id="radiance">
+<!-- ══════════ SECTION 3: BEFORE CREATION ══════════ -->
+<section class="content-section" id="creation">
+  <div class="section-bg-gradient creation-grad"></div>
   <div class="container">
-    <div class="section-label reveal">Hebrews 1:3</div>
-    <h2 class="section-title reveal">THE<br/>RADIANCE<br/>OF HIS GLORY</h2>
-    <div class="two-col">
-      <div class="col-body reveal">
-        <p>The author of Hebrews gives us the most precise image in all of Scripture: the Son is <em>"the radiance of God's glory and the exact representation of his being."</em></p>
-        <p>Consider light and the sun. The sun itself — the blazing core — is unapproachable. But its radiance, its light, is the very expression of what the sun is. The light and the sun are not the same thing; yet the light carries the full reality of the sun to the world. Without the light, the sun is unknowable.</p>
-        <p>So the Son is to the Father. He is not a diminished version of God. He is not a copy or a shadow. He is the living radiance — the full, exact expression of God's own being — sent out into the world so that God could finally be <em>seen</em>.</p>
+    <div class="section-tag">
+      <span data-en="John 1:1–3" data-am="ዮሐንስ 1:1–3">John 1:1–3</span>
+    </div>
+    <h2 class="section-title" data-en="Before Creation" data-am="ፍጥረት ሁሉ ከመፈጠሩ በፊት">Before Creation</h2>
+    <div class="content-grid">
+      <div class="glass-panel content-card reveal">
+        <p data-en="Before the first atom. Before the first photon of light. Before time had a beginning — the Word already existed. Not created at the beginning; already there, already eternal, already God, face to face with the Father." data-am="የመጀመሪያው አቶም ከመፈጠሩ በፊት። የመጀመሪያው ብርሃን ከወጣ በፊት። ጊዜ ሳይጀምር — ቃሉ አስቀድሞ ነበረ። በጊዜ ዘንድ የተፈጠረ ሳይሆን፤ ዘላለማዊ ሆኖ፣ እግዚአብሔር ሆኖ፣ ፊት ለፊት ከአባቱ ጋር ነበረ።">
+          Before the first atom. Before the first photon of light. Before time had a beginning — the Word already existed. Not created at the beginning; already there, already eternal, already God, face to face with the Father.
+        </p>
+        <p data-en='"Through him all things were made; without him nothing was made that has been made." Every star, every galaxy, every breath of life — created through the Word.' data-am='"ሁሉ በእርሱ ሆነ፤ ከሆነውም ምንም ቢሆን ያለ እርሱ አልሆነም።" ከዋክብት ሁሉ፣ ጋላክሲ ሁሉ፣ ሕያው እስትንፋስ ሁሉ — በቃሉ ተፈጥሮ።'>
+          "Through him all things were made; without him nothing was made that has been made." Every star, every galaxy, every breath of life — created through the Word.
+        </p>
       </div>
-      <div class="col-aside reveal">
-        <blockquote class="aside-quote gold">
-          "The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word."
-          <cite>— Hebrews 1:3</cite>
+      <div class="quote-card glass-panel reveal delay1">
+        <blockquote>
+          <p data-en='"In the beginning was the Word, and the Word was with God, and the Word was God."' data-am='"በመጀመሪያ ቃሉ ነበረ፤ ቃሉም በእግዚአብሔር ዘንድ ነበረ፤ ቃሉም እግዚአብሔር ነበረ።"'>
+            "In the beginning was the Word, and the Word was with God, and the Word was God."
+          </p>
+          <cite data-en="— John 1:1" data-am="— ዮሐንስ 1:1">— John 1:1</cite>
         </blockquote>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ PULL QUOTE ═══════ -->
-<div class="pull-quote-section reveal">
+<!-- ══════════ SECTION 4: THE FIRSTBORN ══════════ -->
+<section class="content-section" id="firstborn">
+  <div class="section-bg-gradient firstborn-grad"></div>
   <div class="container">
-    <blockquote class="pull-quote">
-      "Philip said to him, 'Lord, show us the Father, and it is enough for us.' Jesus said to him, 'Have I been with you so long, and you still do not know me, Philip? Whoever has seen me has seen the Father.'"
-      <cite>— John 14:8–9</cite>
-    </blockquote>
-  </div>
-</div>
-
-<!-- ═══════ SECTION 3: BEFORE CREATION ═══════ -->
-<section class="editorial-section dark-section" id="creation">
-  <div class="creation-bg" style="background-image:url('cosmos.jpg')"></div>
-  <div class="creation-overlay"></div>
-  <div class="container" style="position:relative;z-index:2">
-    <div class="section-label reveal" style="color:rgba(255,220,140,.7)">John 1:1–3</div>
-    <h2 class="section-title reveal" style="color:#fff">BEFORE<br/>CREATION</h2>
-    <div class="two-col">
-      <div class="col-body reveal" style="color:rgba(255,255,255,.75)">
-        <p>Before the first atom. Before the first photon of light. Before time had a beginning — <strong style="color:#fff">the Word already existed.</strong> This is the staggering claim that opens the Gospel of John, echoing the very first words of Genesis.</p>
-        <p>"In the beginning" — the same phrase, the same eternal starting point. But this time, instead of "God created," we are told: "the Word was." Past tense, in a moment before all past tenses. He was not created at the beginning; He was already there, already eternal, already God.</p>
-        <p>John goes further: "Through him all things were made; without him nothing was made that has been made." This means everything that exists — every star, every galaxy, every atom of matter, every breath of life — was created by and through the Word. He is the origin of all origins.</p>
+    <div class="section-tag">
+      <span data-en="Colossians 1:15–16" data-am="ቆላስይስ 1:15–16">Colossians 1:15–16</span>
+    </div>
+    <h2 class="section-title" data-en="Firstborn Over All Creation" data-am="ከፍጥረት ሁሉ ፊተኛ">Firstborn Over All Creation</h2>
+    <div class="content-grid reverse">
+      <div class="glass-panel content-card reveal">
+        <p data-en='"Firstborn" is not a title of birth order — it is a title of supreme authority and preeminence. He is the one through whom all creation came into existence. He is not the first item on the list; He is the one who made the list.' data-am='"ፊተኛ" ማለት የልደት ቅደም ተከተል ሳይሆን ፍጹም ሥልጣንና ልዕልና ነው። ፍጥረት ሁሉ ያለ እርሱ አልሆነም። ዝርዝሩ ውስጥ ያለ አይደለም — ዝርዝሩን የሠራ ነው።">
+          "Firstborn" is not a title of birth order — it is a title of supreme authority and preeminence. He is the one through whom all creation came into existence. He is not the first item on the list; He is the one who made the list.
+        </p>
       </div>
-      <div class="col-aside reveal">
-        <blockquote class="aside-quote" style="border-color:rgba(255,220,140,.5);color:rgba(255,255,255,.9)">
-          "In the beginning was the Word, and the Word was with God, and the Word was God."
-          <cite style="color:rgba(255,220,140,.8)">— John 1:1</cite>
-        </blockquote>
-        <blockquote class="aside-quote" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.7)">
-          "He was with God in the beginning. Through him all things were made."
-          <cite style="color:rgba(255,220,140,.6)">— John 1:2–3</cite>
-        </blockquote>
+      <div class="three-truths reveal delay1">
+        <div class="truth-item glass-panel">
+          <span class="truth-num">I</span>
+          <span class="truth-title" data-en="The Source" data-am="ምንጩ">The Source</span>
+          <span class="truth-desc" data-en="All things exist because of Him" data-am="ሁሉ ስለ እርሱ አለ">All things exist because of Him</span>
+        </div>
+        <div class="truth-item glass-panel">
+          <span class="truth-num">II</span>
+          <span class="truth-title" data-en="The Blueprint" data-am="እቅዱ">The Blueprint</span>
+          <span class="truth-desc" data-en="All things were made through Him" data-am="ሁሉ በእርሱ ተፈጥሮ">All things were made through Him</span>
+        </div>
+        <div class="truth-item glass-panel">
+          <span class="truth-num">III</span>
+          <span class="truth-title" data-en="The Purpose" data-am="ዓላማው">The Purpose</span>
+          <span class="truth-desc" data-en="All things were created for Him" data-am="ሁሉ ለእርሱ ተፈጥሮ">All things were created for Him</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ SECTION 4: FIRSTBORN ═══════ -->
-<section class="editorial-section" id="firstborn">
-  <div class="container">
-    <div class="section-label reveal">Colossians 1:15–16</div>
-    <h2 class="section-title reveal">"FIRSTBORN<br/>OF ALL<br/>CREATION"</h2>
-    <div class="two-col">
-      <div class="col-body reveal">
-        <p>This is perhaps the most misunderstood title given to the Son — and Paul is deliberately provocative in his choice of it. In the ancient world, "firstborn" was not about birth order. It was a title of <em>supreme authority</em>, of preeminence, of the one who holds the inheritance.</p>
-        <p>Paul makes this absolutely explicit in the very next verse: <em>"For in him all things were created... all things have been created through him and for him."</em></p>
-        <p>You cannot be created through someone who is himself created. The "Firstborn of all creation" is the one who stands <em>over</em> all creation — who existed before it, who authored it, who holds it together by His power. He is not the first item on the list. He is the one who made the list.</p>
+<!-- ══════════ CONCLUSION ══════════ -->
+<section class="conclusion-section">
+  <div class="conclusion-bg" style="background-image:url('heaven.jpg')"></div>
+  <div class="conclusion-overlay"></div>
+  <div class="container conclusion-inner">
+    <div class="glass-panel conclusion-card reveal">
+      <div class="section-tag">
+        <span data-en="John 1:14" data-am="ዮሐንስ 1:14">John 1:14</span>
       </div>
-      <div class="col-aside reveal">
-        <blockquote class="aside-quote gold">
-          "He is the image of the invisible God, the firstborn of all creation. For by him all things were created... all things were created through him and for him."
-          <cite>— Colossians 1:15–16</cite>
-        </blockquote>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ FULL-WIDTH IMAGE BREAK 2 ═══════ -->
-<div class="fullwidth-image reveal">
-  <img src="divine.jpg" alt="Divine light and presence" />
-  <div class="fullwidth-image-caption">"He is before all things, and in him all things hold together." — Colossians 1:17</div>
-</div>
-
-<!-- ═══════ CONCLUSION ═══════ -->
-<section class="conclusion">
-  <div class="container">
-    <h2 class="conclusion-title reveal">THE<br/>CONCLUSION</h2>
-    <p class="conclusion-body reveal">
-      God is spirit — invisible. God sent the Son — His exact image, His living radiance, who existed before all things and through whom all things were made — into the world in human flesh. Not to be less than God. But so that for the first time, those with eyes to see could look upon the face of God Himself.
-    </p>
-    <p class="conclusion-body reveal delay">
-      <em>"The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth."</em><br/>
-      <span class="cite-inline">— John 1:14</span>
-    </p>
-    <div class="verse-grid reveal delay2">
-      <div class="verse-item">
-        <span class="verse-ref">Hebrews 1:3</span>
-        <span class="verse-text">Radiance of God's glory, exact representation of his being</span>
-      </div>
-      <div class="verse-item">
-        <span class="verse-ref">Colossians 1:15</span>
-        <span class="verse-text">Image of the invisible God, Firstborn over all creation</span>
-      </div>
-      <div class="verse-item">
-        <span class="verse-ref">John 1:14</span>
-        <span class="verse-text">The Word became flesh — we beheld His glory</span>
-      </div>
-      <div class="verse-item">
-        <span class="verse-ref">John 14:9</span>
-        <span class="verse-text">Whoever has seen the Son has seen the Father</span>
+      <h2 class="conclusion-title" data-en="The Word Became Flesh" data-am="ቃሉ ሥጋ ሆነ">The Word Became Flesh</h2>
+      <blockquote class="conclusion-quote">
+        <p data-en='"The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth."' data-am='"ቃሉም ሥጋ ሆነ፤ ጸጋና እውነትም ተሞልቶ በእኛ መካከል አደረ፤ ከአብ ዘንድ ለብቻው የተወለደ ልጅ ክብር እንዳለ ክብሩን አየን።"'>
+          "The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth."
+        </p>
+        <cite data-en="— John 1:14" data-am="— ዮሐንስ 1:14">— John 1:14</cite>
+      </blockquote>
+      <div class="verse-row">
+        <div class="verse-chip">
+          <span class="vr" data-en="Hebrews 1:3" data-am="ዕብራውያን 1:3">Hebrews 1:3</span>
+          <span class="vt" data-en="Radiance of God's glory" data-am="የእግዚአብሔር ክብር ብርሃን">Radiance of God's glory</span>
+        </div>
+        <div class="verse-chip">
+          <span class="vr" data-en="Colossians 1:15" data-am="ቆላስይስ 1:15">Colossians 1:15</span>
+          <span class="vt" data-en="Image of the invisible God" data-am="የማይታየው እግዚአብሔር አምሳያ">Image of the invisible God</span>
+        </div>
+        <div class="verse-chip">
+          <span class="vr" data-en="John 14:9" data-am="ዮሐንስ 14:9">John 14:9</span>
+          <span class="vt" data-en="Seeing Him is seeing the Father" data-am="እርሱን ማየት አባቱን ማየት ነው">Seeing Him is seeing the Father</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FOOTER ═══════ -->
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <div>
-      <p class="footer-title">THE WORD WAS GOD</p>
-      <p class="footer-sub">An exploration of the eternal Son as the visible image of the invisible God — before, through, and over all creation.</p>
-    </div>
-    <div class="footer-refs">
-      <p class="footer-refs-title">KEY SCRIPTURES</p>
-      <ul>
-        <li>John 1:1–18</li>
-        <li>Colossians 1:15–20</li>
-        <li>Hebrews 1:1–4</li>
-        <li>John 14:8–9</li>
-        <li>Proverbs 8:22–31</li>
-        <li>1 Timothy 6:16</li>
-      </ul>
-    </div>
+  <div class="footer-clouds" aria-hidden="true">
+    <div class="cloud fc1"></div>
+    <div class="cloud fc2"></div>
   </div>
-  <div class="footer-bottom">
-    <div class="container">
-      <p>Based on the Holy Scriptures &nbsp;·&nbsp; All quotations ESV unless noted</p>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-cross">✦</span>
+      <span class="footer-name" data-en="The Logos" data-am="ቃሉ">The Logos</span>
     </div>
+    <p class="footer-desc" data-en="A bilingual exploration of how the invisible God made Himself visible through the eternal Word — before, through, and over all creation." data-am="የማይታየው እግዚአብሔር ዘላለማዊውን ቃሉ ተጠቅሞ ራሱን ግልጽ ያደረገበትን እውነት የሚዳስስ የሁለት ቋንቋ ጉዞ — ፍጥረት ሁሉ ከመፈጠሩ በፊት፣ ፍጥረትን ሲፈጥር፣ እና ፍጥረት ሁሉ ላይ።">
+      A bilingual exploration of how the invisible God made Himself visible through the eternal Word — before, through, and over all creation.
+    </p>
+    <p class="footer-copy" data-en="Scripture quotations: ESV · ቅዱስ መጽሐፍ ጥቅሶች፡ አማርኛ ተርጓሜ" data-am="Scripture quotations: ESV · ቅዱስ መጽሐፍ ጥቅሶች፡ አማርኛ ተርጓሜ">Scripture quotations: ESV · ቅዱስ መጽሐፍ ጥቅሶች፡ አማርኛ ተርጓሜ</p>
   </div>
 </footer>
 
