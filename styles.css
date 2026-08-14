@@ -827,6 +827,75 @@ body {
   margin-bottom: 48px;
 }
 
+.proverbs-spotlight {
+  width: 100%;
+  padding: 44px;
+  margin-bottom: 36px;
+  background: rgba(16, 16, 28, 0.72);
+  border: 1px solid rgba(232, 190, 101, 0.28);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 30px rgba(232, 190, 101, 0.1);
+}
+
+.proverbs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  text-align: left;
+  margin-top: 12px;
+}
+@media(max-width: 840px) {
+  .proverbs-grid { grid-template-columns: 1fr; gap: 28px; }
+  .proverbs-spotlight { padding: 28px 20px; }
+}
+
+.prov-block {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: all 0.35s ease;
+}
+.prov-block:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(232, 190, 101, 0.35);
+  transform: translateY(-3px);
+}
+
+.prov-icon {
+  font-size: 1.4rem;
+  color: var(--gold-bright);
+  margin-bottom: 12px;
+}
+
+.prov-block h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.prov-quote {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.prov-ref {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-top: auto;
+}
+
 .eternity-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
