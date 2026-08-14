@@ -52,8 +52,32 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   overflow-x: hidden;
-  cursor: none; /* Uses custom glass cursor */
   -webkit-font-smoothing: antialiased;
+}
+
+/* Custom cursor enabled on desktop pointer */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+/* Touch device cursor reset */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto !important;
+  }
+  .cursor-dot,
+  .cursor-ring,
+  #cursor-canvas {
+    display: none !important;
+  }
+  .glass-btn,
+  .lb,
+  .ham,
+  a {
+    cursor: pointer !important;
+  }
 }
 
 /* ════════════════════════════════════════════
@@ -175,7 +199,7 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(14, 14, 22, 0.55);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
@@ -198,14 +222,14 @@ body {
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(20, 20, 32, 0.65);
   border-color: var(--glass-border-gold);
   transform: translateY(-4px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), var(--glass-glow), inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -227,7 +251,6 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 500;
-  cursor: none;
   position: relative;
   overflow: hidden;
   transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
@@ -309,7 +332,7 @@ body {
 }
 
 .site-header.solid {
-  background: rgba(6, 6, 12, 0.7);
+  background: rgba(6, 6, 12, 0.75);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -404,7 +427,6 @@ body {
   letter-spacing: 1px;
   padding: 4px 8px;
   border-radius: var(--radius-full);
-  cursor: none;
   transition: all 0.2s ease;
 }
 
@@ -426,7 +448,6 @@ body {
   flex-direction: column;
   gap: 5px;
   padding: 10px;
-  cursor: none;
   border: 1px solid var(--glass-border);
 }
 .ham span {
@@ -446,6 +467,12 @@ body {
   right: 20px;
   padding: 16px;
   gap: 8px;
+  z-index: 1001;
+  background: rgba(10, 10, 18, 0.95);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
 }
 .mob-nav.open { display: flex; }
 .mob-nav a {
