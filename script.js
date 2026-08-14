@@ -237,6 +237,23 @@ const sceneObs = new IntersectionObserver((entries) => {
 scenes.forEach(s => sceneObs.observe(s));
 
 /* ════════════════════════════════════════════
+   LAZY-LOAD BACKGROUND IMAGES
+════════════════════════════════════════════ */
+const lazyBgObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bg = entry.target;
+      if (bg.dataset.bg) {
+        bg.style.backgroundImage = `url('${bg.dataset.bg}')`;
+        lazyBgObs.unobserve(bg);
+      }
+    }
+  });
+}, { rootMargin: '450px 0px' });
+
+document.querySelectorAll('.parallax-bg[data-bg]').forEach(bg => lazyBgObs.observe(bg));
+
+/* ════════════════════════════════════════════
    THROTTLED PARALLAX BACKGROUNDS
 ════════════════════════════════════════════ */
 let parallaxTicking = false;
