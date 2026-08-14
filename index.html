@@ -60,10 +60,11 @@
           <button class="lb" id="lb-am" onclick="setLang('am')" title="አማርኛ (Amharic)">አማ</button>
         </div>
 
-        <!-- Light / Dark Mode Toggle -->
-        <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Light / Dark Mode" title="Toggle Light / Dark Mode">
-          <span class="theme-icon sun-icon">☀️</span>
-          <span class="theme-icon moon-icon">🌙</span>
+        <!-- Dual-State Segmented Theme Toggle Pill -->
+        <button class="theme-toggle-pill" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Light or Dark Mode" title="Toggle Light / Dark Mode">
+          <span class="ttp-icon sun" aria-hidden="true">☀️</span>
+          <span class="ttp-icon moon" aria-hidden="true">🌙</span>
+          <span class="ttp-thumb"></span>
         </button>
 
         <!-- Mobile Menu Toggle -->
@@ -83,6 +84,14 @@
     <a href="#prophecies" class="mob-link" data-en="OT Prophecies & Messianic Psalms" data-simple="Bible Prophecies Fulfilled" data-am="የብሉይ ኪዳን ትንቢቶችና መዝሙራት">OT Prophecies & Messianic Psalms</a>
     <a href="#foundation" class="mob-link" data-en="The Foundation" data-simple="Creator of All" data-am="የሁሉ መሠረት">The Foundation</a>
     <a href="#divinity" class="mob-link" data-en="Full Divinity" data-simple="Jesus is God" data-am="ሙሉ መለኮትነቱ">Full Divinity</a>
+
+    <!-- Mobile Theme Switcher Row -->
+    <div class="mob-theme-row">
+      <span class="mob-theme-label" data-en="Reading Theme:" data-simple="Theme:" data-am="ገጽታ፡">Reading Theme:</span>
+      <button class="mob-theme-btn" onclick="toggleTheme()" aria-label="Switch Theme">
+        <span class="mt-icon">☀️ Light / 🌙 Dark</span>
+      </button>
+    </div>
   </div>
 </header>
 

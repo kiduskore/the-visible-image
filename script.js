@@ -142,7 +142,7 @@ if (!isTouchDevice && cursorCanvas && cCtx) {
   animateCursor();
 
   // Delegation for smooth dynamic hover state
-  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .theme-toggle-btn, .pillar-card, .eternity-card, .insight-item, .summary-card, .verse-explorer-card, .vf-btn, .vec-col, .ks-card, .prophecy-card';
+  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .theme-toggle-pill, .mob-theme-btn, .pillar-card, .eternity-card, .insight-item, .summary-card, .verse-explorer-card, .vf-btn, .vec-col, .ks-card, .prophecy-card';
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest && e.target.closest(hoverSelectors)) {
       cursorRing?.classList.add('hover');
