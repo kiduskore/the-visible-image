@@ -832,133 +832,293 @@ body {
 }
 
 /* ════════════════════════════════════════════
-   COMPLETE PROVERBS 8 (ALL 36 VERSES) STYLES
+   THEOLOGY BANNER & HERMENEUTIC KEY
+════════════════════════════════════════════ */
+.theology-banner {
+  width: 100%;
+  padding: 40px;
+  margin-bottom: 44px;
+  background: rgba(18, 16, 32, 0.78);
+  border: 1.5px solid rgba(232, 190, 101, 0.35);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(232, 190, 101, 0.12);
+  text-align: left;
+}
+
+.tb-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.tb-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.key-scriptures-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+@media(max-width: 800px) {
+  .key-scriptures-grid { grid-template-columns: 1fr; }
+}
+
+.ks-card {
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(232, 190, 101, 0.2);
+  border-radius: var(--radius-md);
+  transition: all 0.25s ease;
+}
+.ks-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--gold-bright);
+}
+
+.ks-ref {
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 8px;
+}
+
+.ks-text {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.hermeneutic-guide {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hg-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  flex-wrap: wrap;
+}
+.hg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #60a5fa;
+  box-shadow: 0 0 8px #60a5fa;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════
+   PROVERBS 8 PROPHETIC UNITS (1–36)
 ════════════════════════════════════════════ */
 .chapter-container {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 36px;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
-.chapter-block {
-  padding: 36px 32px;
+.prophetic-unit {
+  padding: 38px 34px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
-.chapter-block.highlight-gold {
-  background: rgba(22, 20, 36, 0.75);
+.prophetic-unit.highlight-gold {
+  background: rgba(22, 19, 36, 0.78);
   border: 1.5px solid rgba(232, 190, 101, 0.45);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(232, 190, 101, 0.15);
 }
 
-.cb-header {
-  margin-bottom: 24px;
+.unit-top-bar {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.cb-tag {
-  display: inline-block;
+.u-tag {
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--gold-soft);
-  border: 1px solid rgba(232, 190, 101, 0.3);
-  align-self: flex-start;
-}
-.cb-tag.gold {
-  background: rgba(232, 190, 101, 0.25);
-  border-color: var(--gold-bright);
-}
-
-.cb-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: #ffffff;
 }
-
-.nt-link-badge {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  align-self: flex-start;
-}
-.nt-link-badge.gold {
+.u-tag.gold {
   color: var(--gold-bright);
-  border-color: rgba(232, 190, 101, 0.35);
-  background: rgba(232, 190, 101, 0.1);
 }
 
-.verses-list {
+.u-type-badge {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+.u-type-badge.typology {
+  background: rgba(96, 165, 250, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  color: #93c5fd;
+}
+.u-type-badge.thematic {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #d8b4fe;
+}
+.u-type-badge.royal {
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #fef08a;
+}
+.u-type-badge.direct {
+  background: rgba(232, 190, 101, 0.25);
+  border: 1px solid rgba(232, 190, 101, 0.55);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(232, 190, 101, 0.2);
+}
+
+.unit-scripture-box {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+}
+
+.usb-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+}
+
+.usb-verses {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
-
-.verse-row {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 18px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
-  align-items: baseline;
-  transition: all 0.25s ease;
-}
-.verse-row:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-.verse-row.highlight {
-  background: rgba(232, 190, 101, 0.08);
-  border-color: rgba(232, 190, 101, 0.25);
-}
-.verse-row.gold-box {
-  background: linear-gradient(135deg, rgba(232, 190, 101, 0.18) 0%, rgba(232, 190, 101, 0.06) 100%);
-  border: 1.5px solid rgba(232, 190, 101, 0.5);
-  box-shadow: 0 8px 24px rgba(232, 190, 101, 0.15);
-}
-
-.v-num {
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--gold-bright);
-  letter-spacing: 0.5px;
-}
-
-.v-text {
+.usb-verses p {
   font-size: 0.94rem;
   line-height: 1.8;
   color: var(--text-dim);
 }
-.verse-row.highlight .v-text {
+.usb-verses p.highlight-line {
+  color: #ffffff;
+  font-weight: 500;
+  background: rgba(232, 190, 101, 0.08);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--gold-bright);
+}
+
+.unit-analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media(max-width: 860px) {
+  .unit-analysis-grid { grid-template-columns: 1fr; }
+}
+
+.ua-col {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.prop-col {
+  background: rgba(105, 65, 198, 0.07);
+  border: 1px solid rgba(105, 65, 198, 0.2);
+}
+.christ-col {
+  background: rgba(232, 190, 101, 0.07);
+  border: 1px solid rgba(232, 190, 101, 0.25);
+}
+
+.ua-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ua-icon {
+  font-size: 1.1rem;
+}
+.ua-head h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: #ffffff;
 }
 
-@media(max-width: 640px) {
-  .verse-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
+.ua-col p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-dim);
+}
+.christ-col p {
+  color: #ffffff;
+}
+
+.unit-citations {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+}
+
+.cit-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.cit-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cit-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--gold-bright);
+  background: rgba(232, 190, 101, 0.12);
+  border: 1px solid rgba(232, 190, 101, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
 }
 
 /* ════════════════════════════════════════════
