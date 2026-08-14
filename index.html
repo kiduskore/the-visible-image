@@ -3,289 +3,202 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title data-en="The Word Was God — A Heavenly Vision" data-am="ቃሉ እግዚአብሔር ነበረ — የሰማያዊ ራዕይ">The Word Was God — A Heavenly Vision</title>
-  <meta name="description" content="A bilingual journey into the eternal truth that God made Himself visible through the Son, before all creation."/>
+  <title>The Word — Light of the World</title>
+  <meta name="description" content="A cinematic spiritual journey from the cosmos to the human spirit — light, compassion, peace."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif+Ethiopic:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Ethiopic:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<!-- ══════════ CANVAS LAYERS ══════════ -->
-<canvas id="particle-canvas"></canvas>
+<!-- ═══════ CANVAS LAYERS ═══════ -->
+<canvas id="cursor-canvas"></canvas>
+<canvas id="star-canvas"></canvas>
 
-<!-- ══════════ ANIMATED CLOUDS ══════════ -->
-<div class="cloud-layer" aria-hidden="true">
-  <div class="cloud c1"></div>
-  <div class="cloud c2"></div>
-  <div class="cloud c3"></div>
-  <div class="cloud c4"></div>
-  <div class="cloud c5"></div>
-  <div class="cloud c6"></div>
-</div>
+<!-- ═══════ CUSTOM CURSOR ═══════ -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
 
-<!-- ══════════ LIGHT RAYS ══════════ -->
-<div class="light-rays" aria-hidden="true">
-  <div class="ray ray1"></div>
-  <div class="ray ray2"></div>
-  <div class="ray ray3"></div>
-  <div class="ray ray4"></div>
-  <div class="ray ray5"></div>
-</div>
+<!-- ═══════ FLOATING LEAVES ═══════ -->
+<div class="leaf-layer" id="leaf-layer" aria-hidden="true"></div>
 
-<!-- ══════════ HEADER ══════════ -->
+<!-- ═══════ HEADER ═══════ -->
 <header class="site-header" id="site-header">
   <div class="header-inner">
-
-    <a class="site-logo" href="#hero">
-      <span class="logo-cross">✦</span>
-      <span class="logo-text" data-en="The Logos" data-am="ቃሉ">The Logos</span>
+    <a class="site-logo" href="#cosmos">
+      <div class="logo-orb"></div>
+      <span class="logo-text" data-en="The Word" data-am="ቃሉ">The Word</span>
     </a>
-
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#spirit" data-en="The Invisible" data-am="የማይታየው">The Invisible</a>
-      <a href="#radiance" data-en="The Radiance" data-am="ብርሃኑ">The Radiance</a>
-      <a href="#creation" data-en="Before Creation" data-am="ፍጥረት በፊት">Before Creation</a>
-      <a href="#firstborn" data-en="The Firstborn" data-am="ፊተኛው">The Firstborn</a>
+    <nav class="main-nav">
+      <a href="#cosmos"   data-en="Cosmos"      data-am="ዓለም">Cosmos</a>
+      <a href="#nature"   data-en="Nature"       data-am="ተፈጥሮ">Nature</a>
+      <a href="#water"    data-en="Water"         data-am="ውሃ">Water</a>
+      <a href="#spirit"   data-en="The Spirit"    data-am="መንፈስ">The Spirit</a>
+      <a href="#peace"    data-en="Peace"          data-am="ሰላም">Peace</a>
     </nav>
-
-    <!-- Language Selector -->
-    <div class="lang-selector" role="group" aria-label="Language / ቋንቋ">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')" aria-pressed="true">EN</button>
-      <span class="lang-divider">|</span>
-      <button class="lang-btn" id="btn-am" onclick="setLang('am')" aria-pressed="false">አማ</button>
+    <div class="lang-sel">
+      <button class="lb active" id="lb-en" onclick="setLang('en')">EN</button>
+      <span>|</span>
+      <button class="lb" id="lb-am" onclick="setLang('am')">አማ</button>
     </div>
-
-    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-
-  <!-- Mobile nav -->
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="#spirit" data-en="The Invisible" data-am="የማይታየው">The Invisible</a>
-    <a href="#radiance" data-en="The Radiance" data-am="ብርሃኑ">The Radiance</a>
-    <a href="#creation" data-en="Before Creation" data-am="ፍጥረት በፊት">Before Creation</a>
-    <a href="#firstborn" data-en="The Firstborn" data-am="ፊተኛው">The Firstborn</a>
+  <div class="mob-nav" id="mob-nav">
+    <a href="#cosmos"  data-en="Cosmos"    data-am="ዓለም">Cosmos</a>
+    <a href="#nature"  data-en="Nature"    data-am="ተፈጥሮ">Nature</a>
+    <a href="#water"   data-en="Water"     data-am="ውሃ">Water</a>
+    <a href="#spirit"  data-en="The Spirit" data-am="መንፈስ">The Spirit</a>
+    <a href="#peace"   data-en="Peace"     data-am="ሰላም">Peace</a>
   </div>
 </header>
 
-<!-- ══════════ HERO ══════════ -->
-<section class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="heaven.jpg" alt="" class="hero-bg-img" id="hero-bg-img"/>
-    <div class="hero-bg-overlay"></div>
-  </div>
-
-  <div class="hero-content glass-panel">
-    <p class="hero-eyebrow">
-      <span data-en="John 1:1 · Colossians 1:15 · Hebrews 1:3" data-am="ዮሐንስ 1:1 · ቆላስይስ 1:15 · ዕብራውያን 1:3">John 1:1 · Colossians 1:15 · Hebrews 1:3</span>
-    </p>
-    <h1 class="hero-title">
-      <span class="hero-line" data-en="The Word" data-am="ቃሉ">The Word</span>
-      <span class="hero-line italic" data-en="Was God" data-am="እግዚአብሔር ነበረ">Was God</span>
+<!-- ═══════════════════════════════════════
+     SECTION 1 — COSMOS HERO
+═══════════════════════════════════════ -->
+<section class="scene" id="cosmos" data-scene="cosmos">
+  <div class="scene-bg parallax-bg" style="background-image:url('milkyway.jpg')" data-speed="0.3"></div>
+  <div class="scene-overlay cosmos-overlay"></div>
+  <div class="scene-content">
+    <p class="eyebrow reveal" data-en="John 1:1 · In the Beginning" data-am="ዮሐንስ 1:1 · በመጀመሪያ">John 1:1 · In the Beginning</p>
+    <h1 class="hero-title reveal">
+      <span class="ht-line" data-en="Before the Stars" data-am="ከዋክብት ሳይፈጠሩ">Before the Stars</span>
+      <span class="ht-line gold" data-en="The Word Was" data-am="ቃሉ ነበረ">The Word Was</span>
     </h1>
-    <p class="hero-subtitle" data-en="Before the universe began, God made Himself visible through the eternal Son — a light so perfect, it carries the fullness of His glory." data-am="ዓለም ሳይፈጠር፣ እግዚአብሔር ራሱን በዘላለማዊው ልጅ ግልጽ አደረገ — ክብሩን ሙሉ በሙሉ የሚሸከም ብርሃን።">
-      Before the universe began, God made Himself visible through the eternal Son — a light so perfect, it carries the fullness of His glory.
+    <p class="scene-sub reveal" data-en="Look up. Every galaxy you see — every star, every atom of light — was spoken into existence by the eternal Word who stood before all things and through whom all things were made." data-am="ወደ ላይ ተመልከት። የሚያያቸው ጋላክሲ ሁሉ — ከዋክብት ሁሉ፣ የብርሃን አቶም ሁሉ — ፍጥረት ሁሉ ከመፈጠሩ በፊት በነበረው ዘላለማዊ ቃሉ ተፈጥሮ።">
+      Look up. Every galaxy you see — every star, every atom of light — was spoken into existence by the eternal Word who stood before all things and through whom all things were made.
     </p>
-    <a class="hero-cta" href="#spirit">
+    <a class="cta-btn reveal" href="#nature">
       <span data-en="Begin the Journey" data-am="ጉዞውን ጀምር">Begin the Journey</span>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
-
-  <div class="scroll-cue" aria-hidden="true">
-    <div class="scroll-cue-line"></div>
-    <span data-en="SCROLL" data-am="ወደ ታች">SCROLL</span>
-  </div>
+  <div class="scroll-hint"><div class="sh-line"></div><span data-en="SCROLL" data-am="ወደ ታች">SCROLL</span></div>
 </section>
 
-<!-- ══════════ SECTION 1: GOD IS SPIRIT ══════════ -->
-<section class="content-section" id="spirit">
-  <div class="section-bg-gradient spirit-grad"></div>
-  <div class="container">
-    <div class="section-tag">
-      <span data-en="John 4:24" data-am="ዮሐንስ 4:24">John 4:24</span>
-    </div>
-    <h2 class="section-title" data-en="God Is Spirit" data-am="እግዚአብሔር መንፈስ ነው">God Is Spirit</h2>
-    <div class="content-grid">
-      <div class="glass-panel content-card reveal">
-        <p data-en="God, by His very nature, is spirit — invisible, untouchable, transcendent, beyond every physical boundary. No human eye has ever seen Him. No hand has reached Him. He dwells in light unapproachable; a purity so absolute that no created being can stand in His presence." data-am="እግዚአብሔር በባሕርዩ መንፈስ ነው — የማይታይ፣ የማይዳሰስ፣ ከሁሉ የላቀ፣ ከማናቸውም ሥጋዊ ወሰን ያለፈ። ምንም ሰው ዐይኑ አይቶት አያውቅም። ምንም እጅ ደርሶት አያውቅም። በማይቀረብ ብርሃን ይኖራል — ምንም ፍጡር ፊቱ ቆሞ ሊቋቋም የማይችለው ቅዱስነት።">
-          God, by His very nature, is spirit — invisible, untouchable, transcendent, beyond every physical boundary. No human eye has ever seen Him. No hand has reached Him. He dwells in light unapproachable; a purity so absolute that no created being can stand in His presence.
-        </p>
-      </div>
-      <div class="quote-card glass-panel reveal delay1">
-        <blockquote>
-          <p data-en='"No one has ever seen God."' data-am='"እግዚአብሔርን ማንም አይቶት አያውቅም።"'>"No one has ever seen God."</p>
-          <cite data-en="— John 1:18" data-am="— ዮሐንስ 1:18">— John 1:18</cite>
-        </blockquote>
-        <blockquote>
-          <p data-en='"God is light; in him there is no darkness at all."' data-am='"እግዚአብሔር ብርሃን ነው፤ ጨለማ ፈጽሞ በእርሱ ዘንድ የለም።"'>"God is light; in him there is no darkness at all."</p>
-          <cite data-en="— 1 John 1:5" data-am="— 1 ዮሐንስ 1:5">— 1 John 1:5</cite>
-        </blockquote>
-      </div>
-    </div>
-  </div>
-  <div class="waterfall-strip" aria-hidden="true">
-    <div class="wf w1"></div><div class="wf w2"></div><div class="wf w3"></div>
-    <div class="wf w4"></div><div class="wf w5"></div>
-  </div>
-</section>
-
-<!-- ══════════ SECTION 2: THE RADIANCE ══════════ -->
-<section class="content-section" id="radiance">
-  <div class="section-bg-gradient radiance-grad"></div>
-  <div class="container">
-    <div class="section-tag">
-      <span data-en="Hebrews 1:3" data-am="ዕብራውያን 1:3">Hebrews 1:3</span>
-    </div>
-    <h2 class="section-title" data-en="The Radiance of His Glory" data-am="የክብሩ ብርሃን">The Radiance of His Glory</h2>
-    <div class="full-quote-block glass-panel reveal">
-      <p class="pull-text" data-en='"The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word."' data-am='"ልጁ የእግዚአብሔር ክብር ብርሃን፣ የባሕርዩም ሐቀኛ ምሳሌ ነው፤ ሁሉን በኃይለ ቃሉ ይደግፋል።"'>
-        "The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word."
+<!-- ═══════════════════════════════════════
+     SECTION 2 — NATURE / FOREST
+═══════════════════════════════════════ -->
+<section class="scene" id="nature" data-scene="nature">
+  <div class="scene-bg parallax-bg" style="background-image:url('forest.jpg')" data-speed="0.2"></div>
+  <div class="scene-overlay forest-overlay"></div>
+  <div class="scene-content content-left">
+    <div class="glass-card reveal">
+      <p class="card-label" data-en="Genesis 1:1 · Creation" data-am="ዘፍጥረት 1:1 · ፍጥረት">Genesis 1:1 · Creation</p>
+      <h2 class="card-title" data-en="Every Living Thing" data-am="እያንዳንዱ ሕያው ፍጡር">Every Living Thing</h2>
+      <p class="card-body" data-en="The same Word who was God spoke every ancient tree into being. Every root pushing through dark soil, every leaf catching morning light, every breath of wind through the forest — these are His fingerprints on the world." data-am="እግዚአብሔር የነበረው ቃሉ እያንዳንዱን ጥንታዊ ዛፍ ፈጠረ። ጨለማ አፈር ውስጥ የሚቆፍር ሥር ሁሉ፣ የጠዋት ብርሃን የሚቀበል ቅጠል ሁሉ፣ ጫካ ውስጥ የሚነፍስ ነፋስ ሁሉ — ዓለም ላይ የእርሱ አሻራዎች ናቸው።">
+        The same Word who was God spoke every ancient tree into being. Every root pushing through dark soil, every leaf catching morning light, every breath of wind through the forest — these are His fingerprints on the world.
       </p>
-      <cite data-en="— Hebrews 1:3" data-am="— ዕብራውያን 1:3">— Hebrews 1:3</cite>
+      <blockquote class="card-quote" data-en='"Through him all things were made; without him nothing was made that has been made." — John 1:3' data-am='"ሁሉ በእርሱ ሆነ፤ ከሆነውም ምንም ቢሆን ያለ እርሱ አልሆነም።" — ዮሐንስ 1:3'>
+        "Through him all things were made; without him nothing was made that has been made." — John 1:3
+      </blockquote>
     </div>
-    <div class="content-grid reverse">
-      <div class="glass-panel content-card reveal delay1">
-        <p data-en="Consider light and the sun. The sun itself is unapproachable — but its radiance, its light, is the very expression of what the sun is. The light carries the full reality of the sun to the world. Without the light, the sun is unknowable." data-am="ፀሐይንና ብርሃኗን አስቡ። ፀሐዩ ራሱ ሊቀረብ አይቻልም — ነገር ግን ብርሃኗ ፀሐዩ ምን እንደሆነ ሙሉ ልኩን ይገልጻል። ብርሃን ሳይኖር ፀሐዩ አይታወቅም።">
-          Consider light and the sun. The sun itself is unapproachable — but its radiance, its light, is the very expression of what the sun is. The light carries the full reality of the sun to the world. Without the light, the sun is unknowable.
-        </p>
-        <p data-en="So the Son is to the Father. He is not a diminished version of God — He is the living radiance, the full and exact expression of God's own being, sent into the world so that God could finally be seen." data-am="እንዲሁ ልጁ ለአባቱ ነው። የእግዚአብሔር ደካማ ቅጂ አይደለም — ሕያው ብርሃን ነው፤ ዓለም እግዚአብሔርን ሊያይ እንዲችል የተላከ።">
-          So the Son is to the Father. He is not a diminished version of God — He is the living radiance, the full and exact expression of God's own being, sent into the world so that God could finally be seen.
-        </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 — WATER
+═══════════════════════════════════════ -->
+<section class="scene" id="water" data-scene="water">
+  <div class="scene-bg parallax-bg" style="background-image:url('water.jpg')" data-speed="0.25"></div>
+  <div class="scene-overlay water-overlay"></div>
+  <canvas class="ripple-canvas" id="ripple-canvas"></canvas>
+  <div class="scene-content content-center">
+    <p class="eyebrow reveal" data-en="Psalm 23:2 · Still Waters" data-am="መዝሙር 23:2 · ጸጥ ያሉ ውሃዎች">Psalm 23:2 · Still Waters</p>
+    <h2 class="scene-title-lg reveal" data-en="He Leads Me Beside Still Waters" data-am="በጸጥ ወዳሉ ውሃዎች ዳር ይመራኛል">He Leads Me Beside Still Waters</h2>
+    <div class="water-quote-row">
+      <div class="wq reveal">
+        <span class="wq-num">I</span>
+        <span class="wq-text" data-en="Peace that passes understanding" data-am="ልብ ከሚሰማው በላይ የሆነ ሰላም">Peace that passes understanding</span>
       </div>
-      <div class="orb-visual reveal">
-        <div class="orb-glow-ring"></div>
-        <div class="orb-core"></div>
-        <p class="orb-caption" data-en="The Radiance of God" data-am="የእግዚአብሔር ብርሃን">The Radiance of God</p>
+      <div class="wq reveal delay1">
+        <span class="wq-num">II</span>
+        <span class="wq-text" data-en="Rest for the weary soul" data-am="ለደከመ ነፍስ ዕረፍት">Rest for the weary soul</span>
+      </div>
+      <div class="wq reveal delay2">
+        <span class="wq-num">III</span>
+        <span class="wq-text" data-en="Renewal of all things" data-am="ሁሉ ነገር መታደስ">Renewal of all things</span>
+      </div>
+    </div>
+    <p class="ripple-hint" data-en="✦ Click the water to create ripples" data-am="✦ ሞገድ ለመፍጠር ውሃውን ጠቅ ያድርጉ">✦ Click the water to create ripples</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 — THE SPIRIT / LIGHT FIGURE
+═══════════════════════════════════════ -->
+<section class="scene" id="spirit" data-scene="spirit">
+  <div class="scene-bg parallax-bg" style="background-image:url('spirit.jpg')" data-speed="0.15"></div>
+  <div class="scene-overlay spirit-overlay"></div>
+  <div class="scene-content content-right">
+    <div class="glass-card light-card reveal">
+      <p class="card-label gold-label" data-en="Hebrews 1:3 · The Radiance" data-am="ዕብራውያን 1:3 · ብርሃን">Hebrews 1:3 · The Radiance</p>
+      <h2 class="card-title light-title" data-en="The Light of the World" data-am="የዓለም ብርሃን">The Light of the World</h2>
+      <p class="card-body" data-en="He came not to condemn but to heal. Not to rule but to serve. Not to stand above but to kneel beside. In every act of compassion, in every moment of forgiveness, in every hand extended to someone fallen — this is the light of the Word made flesh." data-am="የመጣው ሊፈርድ ሳይሆን ሊፈውስ ነው። ሊገዛ ሳይሆን ሊያገለግል ነው። ከፍ ብሎ ሊቆም ሳይሆን ቀርቦ ሊቆም ነው። ርህራሄ በሚፈሰስበት ሁሉ፣ ይቅርታ በሚሰጥበት ሁሉ፣ ወደ ቁስለኛ የሚዘረጋ እጅ ሁሉ — ሥጋ የሆነው ቃሉ ብርሃን ይህ ነው።">
+        He came not to condemn but to heal. Not to rule but to serve. Not to stand above but to kneel beside. In every act of compassion, in every moment of forgiveness, in every hand extended to someone fallen — this is the light of the Word made flesh.
+      </p>
+      <div class="spirit-verses">
+        <div class="sv"><span class="sv-ref">John 8:12</span><span class="sv-text" data-en="I am the light of the world" data-am="እኔ የዓለም ብርሃን ነኝ">I am the light of the world</span></div>
+        <div class="sv"><span class="sv-ref">Matt 5:9</span><span class="sv-text" data-en="Blessed are the peacemakers" data-am="የሚያስታርቁ ብፁዓን ናቸው">Blessed are the peacemakers</span></div>
+        <div class="sv"><span class="sv-ref">John 13:34</span><span class="sv-text" data-en="Love one another as I have loved you" data-am="እኔ እንደ ወደዳችሁ እርስ በርሳችሁ ተዋደዱ">Love one another as I have loved you</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FULL HEAVEN IMAGE BREAK ══════════ -->
-<div class="image-break">
-  <img src="heaven.jpg" alt="A serene vision of heaven — clouds, golden light, celestial gardens"/>
-  <div class="image-break-overlay">
-    <p class="image-break-quote glass-panel" data-en='"Whoever has seen me has seen the Father." — John 14:9' data-am='"እኔን ያየ አባቴን አይቷል።" — ዮሐንስ 14:9'>"Whoever has seen me has seen the Father." — John 14:9</p>
-  </div>
-</div>
-
-<!-- ══════════ SECTION 3: BEFORE CREATION ══════════ -->
-<section class="content-section" id="creation">
-  <div class="section-bg-gradient creation-grad"></div>
-  <div class="container">
-    <div class="section-tag">
-      <span data-en="John 1:1–3" data-am="ዮሐንስ 1:1–3">John 1:1–3</span>
-    </div>
-    <h2 class="section-title" data-en="Before Creation" data-am="ፍጥረት ሁሉ ከመፈጠሩ በፊት">Before Creation</h2>
-    <div class="content-grid">
-      <div class="glass-panel content-card reveal">
-        <p data-en="Before the first atom. Before the first photon of light. Before time had a beginning — the Word already existed. Not created at the beginning; already there, already eternal, already God, face to face with the Father." data-am="የመጀመሪያው አቶም ከመፈጠሩ በፊት። የመጀመሪያው ብርሃን ከወጣ በፊት። ጊዜ ሳይጀምር — ቃሉ አስቀድሞ ነበረ። በጊዜ ዘንድ የተፈጠረ ሳይሆን፤ ዘላለማዊ ሆኖ፣ እግዚአብሔር ሆኖ፣ ፊት ለፊት ከአባቱ ጋር ነበረ።">
-          Before the first atom. Before the first photon of light. Before time had a beginning — the Word already existed. Not created at the beginning; already there, already eternal, already God, face to face with the Father.
-        </p>
-        <p data-en='"Through him all things were made; without him nothing was made that has been made." Every star, every galaxy, every breath of life — created through the Word.' data-am='"ሁሉ በእርሱ ሆነ፤ ከሆነውም ምንም ቢሆን ያለ እርሱ አልሆነም።" ከዋክብት ሁሉ፣ ጋላክሲ ሁሉ፣ ሕያው እስትንፋስ ሁሉ — በቃሉ ተፈጥሮ።'>
-          "Through him all things were made; without him nothing was made that has been made." Every star, every galaxy, every breath of life — created through the Word.
-        </p>
-      </div>
-      <div class="quote-card glass-panel reveal delay1">
-        <blockquote>
-          <p data-en='"In the beginning was the Word, and the Word was with God, and the Word was God."' data-am='"በመጀመሪያ ቃሉ ነበረ፤ ቃሉም በእግዚአብሔር ዘንድ ነበረ፤ ቃሉም እግዚአብሔር ነበረ።"'>
-            "In the beginning was the Word, and the Word was with God, and the Word was God."
-          </p>
-          <cite data-en="— John 1:1" data-am="— ዮሐንስ 1:1">— John 1:1</cite>
-        </blockquote>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SECTION 4: THE FIRSTBORN ══════════ -->
-<section class="content-section" id="firstborn">
-  <div class="section-bg-gradient firstborn-grad"></div>
-  <div class="container">
-    <div class="section-tag">
-      <span data-en="Colossians 1:15–16" data-am="ቆላስይስ 1:15–16">Colossians 1:15–16</span>
-    </div>
-    <h2 class="section-title" data-en="Firstborn Over All Creation" data-am="ከፍጥረት ሁሉ ፊተኛ">Firstborn Over All Creation</h2>
-    <div class="content-grid reverse">
-      <div class="glass-panel content-card reveal">
-        <p data-en='"Firstborn" is not a title of birth order — it is a title of supreme authority and preeminence. He is the one through whom all creation came into existence. He is not the first item on the list; He is the one who made the list.' data-am='"ፊተኛ" ማለት የልደት ቅደም ተከተል ሳይሆን ፍጹም ሥልጣንና ልዕልና ነው። ፍጥረት ሁሉ ያለ እርሱ አልሆነም። ዝርዝሩ ውስጥ ያለ አይደለም — ዝርዝሩን የሠራ ነው።">
-          "Firstborn" is not a title of birth order — it is a title of supreme authority and preeminence. He is the one through whom all creation came into existence. He is not the first item on the list; He is the one who made the list.
-        </p>
-      </div>
-      <div class="three-truths reveal delay1">
-        <div class="truth-item glass-panel">
-          <span class="truth-num">I</span>
-          <span class="truth-title" data-en="The Source" data-am="ምንጩ">The Source</span>
-          <span class="truth-desc" data-en="All things exist because of Him" data-am="ሁሉ ስለ እርሱ አለ">All things exist because of Him</span>
-        </div>
-        <div class="truth-item glass-panel">
-          <span class="truth-num">II</span>
-          <span class="truth-title" data-en="The Blueprint" data-am="እቅዱ">The Blueprint</span>
-          <span class="truth-desc" data-en="All things were made through Him" data-am="ሁሉ በእርሱ ተፈጥሮ">All things were made through Him</span>
-        </div>
-        <div class="truth-item glass-panel">
-          <span class="truth-num">III</span>
-          <span class="truth-title" data-en="The Purpose" data-am="ዓላማው">The Purpose</span>
-          <span class="truth-desc" data-en="All things were created for Him" data-am="ሁሉ ለእርሱ ተፈጥሮ">All things were created for Him</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CONCLUSION ══════════ -->
-<section class="conclusion-section">
-  <div class="conclusion-bg" style="background-image:url('heaven.jpg')"></div>
-  <div class="conclusion-overlay"></div>
-  <div class="container conclusion-inner">
-    <div class="glass-panel conclusion-card reveal">
-      <div class="section-tag">
-        <span data-en="John 1:14" data-am="ዮሐንስ 1:14">John 1:14</span>
-      </div>
-      <h2 class="conclusion-title" data-en="The Word Became Flesh" data-am="ቃሉ ሥጋ ሆነ">The Word Became Flesh</h2>
-      <blockquote class="conclusion-quote">
-        <p data-en='"The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth."' data-am='"ቃሉም ሥጋ ሆነ፤ ጸጋና እውነትም ተሞልቶ በእኛ መካከል አደረ፤ ከአብ ዘንድ ለብቻው የተወለደ ልጅ ክብር እንዳለ ክብሩን አየን።"'>
-          "The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth."
+<!-- ═══════════════════════════════════════
+     SECTION 5 — PEACE / CONCLUSION
+═══════════════════════════════════════ -->
+<section class="scene peace-scene" id="peace" data-scene="peace">
+  <div class="scene-bg parallax-bg" style="background-image:url('heaven.jpg')" data-speed="0.2"></div>
+  <div class="scene-overlay peace-overlay"></div>
+  <div class="scene-content content-center">
+    <div class="peace-inner reveal">
+      <p class="eyebrow" data-en="John 1:14 · The Arrival" data-am="ዮሐንስ 1:14 · መምጣት">John 1:14 · The Arrival</p>
+      <h2 class="peace-title" data-en="The Word Became Flesh" data-am="ቃሉ ሥጋ ሆነ">The Word Became Flesh</h2>
+      <blockquote class="peace-quote">
+        <p data-en='"He made his dwelling among us. We have seen his glory — full of grace and truth."' data-am='"በእኛ መካከል አደረ። ጸጋና እውነትም ተሞልቶ ክብሩን አየን።"'>
+          "He made his dwelling among us. We have seen his glory — full of grace and truth."
         </p>
         <cite data-en="— John 1:14" data-am="— ዮሐንስ 1:14">— John 1:14</cite>
       </blockquote>
-      <div class="verse-row">
-        <div class="verse-chip">
-          <span class="vr" data-en="Hebrews 1:3" data-am="ዕብራውያን 1:3">Hebrews 1:3</span>
-          <span class="vt" data-en="Radiance of God's glory" data-am="የእግዚአብሔር ክብር ብርሃን">Radiance of God's glory</span>
+      <div class="truth-pillars">
+        <div class="pillar glass-card">
+          <span class="pillar-icon">☀</span>
+          <span class="pillar-name" data-en="Light" data-am="ብርሃን">Light</span>
+          <span class="pillar-desc" data-en="He is the light no darkness can overcome" data-am="ምንም ጨለማ ሊቋቋመው የማይችለው ብርሃን ነው">He is the light no darkness can overcome</span>
         </div>
-        <div class="verse-chip">
-          <span class="vr" data-en="Colossians 1:15" data-am="ቆላስይስ 1:15">Colossians 1:15</span>
-          <span class="vt" data-en="Image of the invisible God" data-am="የማይታየው እግዚአብሔር አምሳያ">Image of the invisible God</span>
+        <div class="pillar glass-card">
+          <span class="pillar-icon">❤</span>
+          <span class="pillar-name" data-en="Love" data-am="ፍቅር">Love</span>
+          <span class="pillar-desc" data-en="Greater love has no one than this" data-am="ከዚህ የሚበልጥ ፍቅር ከማንም ዘንድ የለም">Greater love has no one than this</span>
         </div>
-        <div class="verse-chip">
-          <span class="vr" data-en="John 14:9" data-am="ዮሐንስ 14:9">John 14:9</span>
-          <span class="vt" data-en="Seeing Him is seeing the Father" data-am="እርሱን ማየት አባቱን ማየት ነው">Seeing Him is seeing the Father</span>
+        <div class="pillar glass-card">
+          <span class="pillar-icon">✦</span>
+          <span class="pillar-name" data-en="Peace" data-am="ሰላም">Peace</span>
+          <span class="pillar-desc" data-en="My peace I give you, not as the world gives" data-am="ዓለም እንደሚሰጠው አይደለም — ሰላሜን እሰጣችኋለሁ">My peace I give you, not as the world gives</span>
+        </div>
+        <div class="pillar glass-card">
+          <span class="pillar-icon">∞</span>
+          <span class="pillar-name" data-en="Life" data-am="ሕይወት">Life</span>
+          <span class="pillar-desc" data-en="I am the resurrection and the life" data-am="እኔ ትንሣኤና ሕይወት ነኝ">I am the resurrection and the life</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
+<!-- ═══════ FOOTER ═══════ -->
 <footer class="site-footer">
-  <div class="footer-clouds" aria-hidden="true">
-    <div class="cloud fc1"></div>
-    <div class="cloud fc2"></div>
-  </div>
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="logo-cross">✦</span>
-      <span class="footer-name" data-en="The Logos" data-am="ቃሉ">The Logos</span>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="logo-orb sm"></div>
+      <span data-en="The Word Was God" data-am="ቃሉ እግዚአብሔር ነበረ">The Word Was God</span>
     </div>
-    <p class="footer-desc" data-en="A bilingual exploration of how the invisible God made Himself visible through the eternal Word — before, through, and over all creation." data-am="የማይታየው እግዚአብሔር ዘላለማዊውን ቃሉ ተጠቅሞ ራሱን ግልጽ ያደረገበትን እውነት የሚዳስስ የሁለት ቋንቋ ጉዞ — ፍጥረት ሁሉ ከመፈጠሩ በፊት፣ ፍጥረትን ሲፈጥር፣ እና ፍጥረት ሁሉ ላይ።">
-      A bilingual exploration of how the invisible God made Himself visible through the eternal Word — before, through, and over all creation.
+    <p class="footer-desc" data-en="A cinematic spiritual journey from the cosmos to the human spirit — inspired by the eternal truth of John 1." data-am="ከዓለም እስከ ሰው ነፍስ ያለ ሲኒማዊ መንፈሳዊ ጉዞ — በዮሐንስ 1 ዘላለማዊ እውነት ተመስጦ።">
+      A cinematic spiritual journey from the cosmos to the human spirit — inspired by the eternal truth of John 1.
     </p>
-    <p class="footer-copy" data-en="Scripture quotations: ESV · ቅዱስ መጽሐፍ ጥቅሶች፡ አማርኛ ተርጓሜ" data-am="Scripture quotations: ESV · ቅዱስ መጽሐፍ ጥቅሶች፡ አማርኛ ተርጓሜ">Scripture quotations: ESV · ቅዱስ መጽሐፍ ጥቅሶች፡ አማርኛ ተርጓሜ</p>
+    <p class="footer-scripture" data-en="Scripture: ESV · አማርኛ ቅዱስ መጽሐፍ" data-am="Scripture: ESV · አማርኛ ቅዱስ መጽሐፍ">Scripture: ESV · አማርኛ ቅዱስ መጽሐፍ</p>
   </div>
 </footer>
 
