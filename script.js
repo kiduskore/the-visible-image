@@ -117,7 +117,7 @@ if (!isTouchDevice && cursorCanvas && cCtx) {
   animateCursor();
 
   // Delegation for smooth dynamic hover state
-  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .pillar-card, .eternity-card, .insight-item, .summary-card';
+  const hoverSelectors = 'a, button, .glass-btn, .glass-card, .glass-pill, .glass-link, .pillar-card, .eternity-card, .insight-item, .summary-card, .chapter-block, .prophecy-card, .verse-row';
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest && e.target.closest(hoverSelectors)) {
       cursorRing?.classList.add('hover');
@@ -199,7 +199,7 @@ if (starCanvas && sCtx) {
 /* ════════════════════════════════════════════
    WATER RIPPLE CANVAS (TOUCH & CLICK SUPPORT)
 ════════════════════════════════════════════ */
-const eternitySection = document.getElementById('eternity');
+const eternitySection = document.getElementById('proverbs8-full') || document.getElementById('eternity');
 const rippleCanvas = document.getElementById('ripple-canvas');
 const rCtx = rippleCanvas?.getContext('2d');
 const ripples = [];

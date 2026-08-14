@@ -831,112 +831,231 @@ body {
   margin-bottom: 48px;
 }
 
-.proverbs-spotlight {
-  width: 100%;
-  padding: 44px;
-  margin-bottom: 36px;
-  background: rgba(16, 16, 28, 0.72);
-  border: 1px solid rgba(232, 190, 101, 0.28);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 30px rgba(232, 190, 101, 0.1);
-}
-
-.proverbs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  text-align: left;
-  margin-top: 12px;
-}
-@media(max-width: 840px) {
-  .proverbs-grid { grid-template-columns: 1fr; gap: 28px; }
-  .proverbs-spotlight { padding: 28px 20px; }
-}
-
-.prov-block {
+/* ════════════════════════════════════════════
+   COMPLETE PROVERBS 8 (ALL 36 VERSES) STYLES
+════════════════════════════════════════════ */
+.chapter-container {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  transition: all 0.35s ease;
-}
-.prov-block:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(232, 190, 101, 0.35);
-  transform: translateY(-3px);
+  gap: 28px;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
-.prov-icon {
-  font-size: 1.4rem;
-  color: var(--gold-bright);
-  margin-bottom: 12px;
+.chapter-block {
+  padding: 36px 32px;
+  text-align: left;
 }
 
-.prov-block h4 {
+.chapter-block.highlight-gold {
+  background: rgba(22, 20, 36, 0.75);
+  border: 1.5px solid rgba(232, 190, 101, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(232, 190, 101, 0.15);
+}
+
+.cb-header {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cb-tag {
+  display: inline-block;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-bottom: 14px;
-}
-
-.prov-quote {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: var(--text-dim);
-  font-style: italic;
-  margin-bottom: 14px;
-}
-
-.prov-ref {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--gold-bright);
-  margin-top: auto;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--gold-soft);
+  border: 1px solid rgba(232, 190, 101, 0.3);
+  align-self: flex-start;
+}
+.cb-tag.gold {
+  background: rgba(232, 190, 101, 0.25);
+  border-color: var(--gold-bright);
 }
 
-.eternity-grid {
+.cb-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.nt-link-badge {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  align-self: flex-start;
+}
+.nt-link-badge.gold {
+  color: var(--gold-bright);
+  border-color: rgba(232, 190, 101, 0.35);
+  background: rgba(232, 190, 101, 0.1);
+}
+
+.verses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.verse-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  width: 100%;
-  margin-bottom: 36px;
+  grid-template-columns: 80px 1fr;
+  gap: 18px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  align-items: baseline;
+  transition: all 0.25s ease;
 }
-@media(max-width: 860px) {
-  .eternity-grid { grid-template-columns: 1fr; }
+.verse-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
-.eternity-card {
-  padding: 36px 28px;
+.verse-row.highlight {
+  background: rgba(232, 190, 101, 0.08);
+  border-color: rgba(232, 190, 101, 0.25);
+}
+.verse-row.gold-box {
+  background: linear-gradient(135deg, rgba(232, 190, 101, 0.18) 0%, rgba(232, 190, 101, 0.06) 100%);
+  border: 1.5px solid rgba(232, 190, 101, 0.5);
+  box-shadow: 0 8px 24px rgba(232, 190, 101, 0.15);
+}
+
+.v-num {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  letter-spacing: 0.5px;
+}
+
+.v-text {
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+}
+.verse-row.highlight .v-text {
+  color: #ffffff;
+}
+
+@media(max-width: 640px) {
+  .verse-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* ════════════════════════════════════════════
+   OT PROPHECIES & NT FULFILLMENT MATRIX
+════════════════════════════════════════════ */
+.prophecy-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  width: 100%;
+  margin-top: 12px;
+}
+@media(max-width: 900px) {
+  .prophecy-matrix-grid { grid-template-columns: 1fr; }
+}
+
+.prophecy-card {
+  padding: 32px 28px;
   text-align: left;
   display: flex;
   flex-direction: column;
 }
-.et-num {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: rgba(232, 190, 101, 0.45);
-  line-height: 1;
-  margin-bottom: 16px;
+
+.prop-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
-.eternity-card h3 {
+
+.pb-tag {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin-bottom: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
 }
-.eternity-card p {
+.pb-tag.ot {
+  background: rgba(105, 65, 198, 0.2);
+  border: 1px solid rgba(105, 65, 198, 0.4);
+  color: #d6bbfb;
+}
+.pb-tag.nt {
+  background: rgba(232, 190, 101, 0.2);
+  border: 1px solid rgba(232, 190, 101, 0.45);
+  color: var(--gold-bright);
+}
+
+.pb-verse {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.prop-content {
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+}
+.ot-box {
+  background: rgba(105, 65, 198, 0.06);
+  border: 1px solid rgba(105, 65, 198, 0.18);
+}
+.nt-box {
+  background: rgba(232, 190, 101, 0.06);
+  border: 1px solid rgba(232, 190, 101, 0.2);
+}
+
+.prop-text {
   font-size: 0.9rem;
-  color: var(--text-dim);
   line-height: 1.75;
+  color: var(--text-dim);
+}
+.ot-box .prop-text { font-style: italic; color: #f4ebff; }
+.nt-box .prop-text { color: #ffffff; }
+
+.prop-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0;
+}
+.pd-arrow {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--gold-bright);
+  background: rgba(232, 190, 101, 0.12);
+  border: 1px solid rgba(232, 190, 101, 0.3);
+  padding: 4px 16px;
+  border-radius: var(--radius-pill);
 }
 
 .ripple-canvas {
